@@ -1,0 +1,19 @@
+#app{
+    position: absolute;
+    bottom: 17.4%;
+    left: 5.7%;
+    font-size: 4.9vw;
+    font-weight: 600;
+    font-family: 'Kanit', sans-serif;
+    color: #393939;
+    letter-spacing: 1px;
+}
+#app::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #393939;
+    bottom: -10%;
+    left: 0
+}
