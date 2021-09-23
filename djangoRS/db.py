@@ -1,7 +1,7 @@
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pictory',
+        'NAME': 'picty',
         'USER': 'yeon',
         'PASSWORD': 'now0913', # 비번 입력
         'HOST': 'localhost',
