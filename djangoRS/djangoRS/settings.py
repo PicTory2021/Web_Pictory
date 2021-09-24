@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-import json
+import os, json
 import db
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,8 +22,9 @@ SECRETS_PATH = os.path.join(ROOT_DIR, 'djangoRS/djangoRS/secrets.json')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = json.loads(open(SECRETS_PATH).read())
+
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'appRS',
 ]
 
@@ -77,8 +78,8 @@ WSGI_APPLICATION = 'djangoRS.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = db.DATABASES
+SECRET_KEY = json.loads(open(SECRETS_PATH).read())
 
 
 # Password validation
