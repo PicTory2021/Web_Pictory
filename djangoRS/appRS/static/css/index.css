@@ -18,7 +18,7 @@
     left: 0
 }
 body{
-    /*background-color: beige;*/
+    background-color: #F0E5DE;
     font-family: 'Gowun Dodum', sans-serif;
     margin: 0;
     padding: 0;
@@ -262,3 +262,125 @@ body{
         opacity: 0.25;
     }
 
+
+.indexSectionOne{
+    padding: 6em 0em 4em;
+    margin:0;
+    border:0;
+
+}
+
+.indexcontainer{
+    margin-left: auto;
+    margin-right: auto;
+    width:90%;
+}
+
+.indexcontainer header, .indexcontainer .address{
+    border-bottom: medium double rgba(144, 144, 144, 0.25);
+    padding-bottom: 1em;
+}
+.indexcontainer header{
+    margin-bottom: 4em;
+    text-align: center;
+}
+
+.indexcontainer h2{
+    font-size: 1.75em;
+    line-height: 1.5em;
+    color:#666;
+    font-weight: 300;
+    margin: 0 0 1em 0;
+}
+.indexcontainer h3{
+    font-size: 1.35em;
+    line-height: 1.5em;
+    color:#666;
+    font-weight: 300;
+    margin: 0 0 1em 0;
+}
+.indexcontainer h4{
+    font-size: 14px;
+    line-height: 1.5em;
+    color:#666;
+    font-weight: 300;
+    margin: 0 0 1em 0;
+}
+.indexcontainer p{
+    font-size: 1.25em;
+    margin-top: -1em;
+    line-height: 1.5em;
+    color:#666;
+    margin: 0 0 2em 0;
+}
+.indexcontainer .row p{
+    font-size: 17px;
+}
+.indexcontainer .row{
+    text-align:center;
+    padding-left: 5px;
+    border-bottom: solid 1px transparent;
+    display: grid;
+    grid-template-columns: 47% 47%;
+    grid-column-gap: 4%;
+    grid-row-gap:2em;
+}
+@media(min-width:1300px){
+    .indexcontainer .row{
+        text-align:center;
+        padding-left: 5px;
+        border-bottom: solid 1px transparent;
+        display: grid;
+        grid-template-columns: 32% 32% 32%;
+        grid-column-gap: 4%;
+        grid-row-gap:2em;
+    }
+}
+/*.indexcontainer .feature{*/
+/*    text-align:center;*/
+/*    display: grid;*/
+/*    grid-template-rows: 35% 10% 10% 40%;*/
+/*}*/
+
+.indexcontainer .image.fit{
+    display: block;
+    margin: 0 0 2em 0;
+    width: 100%;
+
+}
+.indexcontainer .image{
+    border-radius: 4px;
+    border: 0;
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    text-align: center;
+
+    /*height: 43%;*/
+    /*width:auto;*/
+}
+
+.button2.down.anchored{
+    background-image: url("../images/dark-arrow.svg");
+    border-color: #ffffff;
+
+    bottom: -15px;
+    border-bottom: 0;
+    border-radius: 3em 3em 0 0;
+    height: 4.5em;
+    margin-left: -2em;
+    background-color: transparent;
+    border: solid 2px #e5e6e7;
+    color: rgba(255, 255, 255, 0);
+    position: absolute;
+    left: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-indent: 2.3em;
+    overflow: hidden;
+
+    transition: background-color 0.2s ease-in-out;
+}
+.button2.style2:hover{
+    background-color: rgba(229, 230, 231, 0.25);
+}

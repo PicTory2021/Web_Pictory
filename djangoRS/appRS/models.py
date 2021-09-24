@@ -5,7 +5,8 @@ from django.db import models
 from django.db import models
 
 class Image(models.Model):
-    Name = models.CharField(max_length=150, primary_key=True)
+    Id = models.IntegerField(auto_created=True, default=1, primary_key=True)
+    Name = models.CharField(max_length=150)
     Extension = models.CharField(max_length=10)
     ZipCode = models.CharField(max_length=9,null=True)
     Address = models.CharField(max_length=150,null=True)
