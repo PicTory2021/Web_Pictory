@@ -19,5 +19,5 @@ import appRS.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', appRS.views.index, name='index')
+    path('', appRS.views.index, name='index')
 ]

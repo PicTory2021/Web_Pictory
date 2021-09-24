@@ -1,19 +1,264 @@
 #app{
-    position: absolute;
-    bottom: 17.4%;
-    left: 5.7%;
+    /*position: absolute;*/
+    /*bottom: 17.4%;*/
+    /*left: 5.7%;*/
     font-size: 4.9vw;
     font-weight: 600;
-    font-family: 'Kanit', sans-serif;
+    /*font-family: 'Kanit', sans-serif;*/
     color: #393939;
     letter-spacing: 1px;
 }
 #app::after{
     content: "";
-    position: absolute;
-    width: 100%;
-    height: 3px;
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*height: 3px;*/
     background-color: #393939;
     bottom: -10%;
     left: 0
 }
+body{
+    /*background-color: beige;*/
+    font-family: 'Gowun Dodum', sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+/*#banner {*/
+/*    padding: 10em 2em 8em;*/
+/*}*/
+
+/*#banner h2 {*/
+/*    font-size: 2.25em;*/
+/*}*/
+
+/*#banner p {*/
+/*    font-size: 1.25em;*/
+/*}*/
+
+
+#banner {
+    background: url("../images/overlay.png"), url("../images/가산수피아1.JPG");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    padding: 16em 0em 14em;
+    text-align: center;
+    padding: 10em 2em 8em;
+    height: 300px;
+}
+
+#banner h2 {
+    color: #ffffff;
+    font-family:  'Bitter', serif;
+    font-size: 3.25em;
+    font-weight: 400;
+    line-height: 1em;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+}
+
+#banner p {
+    font-size: 1em;
+    margin: 1.5em 0 0 0;
+}
+
+#banner .actions {
+    margin: 6em 0 0 0;
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+}
+
+/*ul.actions {*/
+/*    cursor: default;*/
+/*    list-style: none;*/
+/*    padding-left: 0;*/
+/*}*/
+
+#banner .button {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    font-weight: 300;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    /*background-color: #3ba666;*/
+
+    border-radius: 4px;
+    /*border: 0;*/
+    color: #ffffff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    height: 2.85em;
+    line-height: 2.8em;
+    padding: 0 2em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#banner .button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Button */
+
+/*input[type="submit"],*/
+/*input[type="reset"],*/
+/*input[type="button"],*/
+/*.button {*/
+/*    -moz-appearance: none;*/
+/*    -webkit-appearance: none;*/
+/*    -o-appearance: none;*/
+/*    -ms-appearance: none;*/
+/*    appearance: none;*/
+/*    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;*/
+/*    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;*/
+/*    -o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;*/
+/*    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;*/
+/*    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;*/
+/*    background-color: #3ba666;*/
+/*    border-radius: 4px;*/
+/*    border: 0;*/
+/*    color: #ffffff !important;*/
+/*    cursor: pointer;*/
+/*    display: inline-block;*/
+/*    font-weight: 400;*/
+/*    height: 2.85em;*/
+/*    line-height: 2.8em;*/
+/*    padding: 0 2em;*/
+/*    text-align: center;*/
+/*    text-decoration: none;*/
+/*    white-space: nowrap;*/
+/*}*/
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover,
+    .button:hover {
+        background-color: #42b972;
+    }
+
+    input[type="submit"]:active,
+    input[type="reset"]:active,
+    input[type="button"]:active,
+    .button:active {
+        background-color: #34935a;
+    }
+
+    input[type="submit"].icon,
+    input[type="reset"].icon,
+    input[type="button"].icon,
+    .button.icon {
+        padding-left: 1.35em;
+    }
+
+        input[type="submit"].icon:before,
+        input[type="reset"].icon:before,
+        input[type="button"].icon:before,
+        .button.icon:before {
+            margin-right: 0.5em;
+        }
+
+    input[type="submit"].fit,
+    input[type="reset"].fit,
+    input[type="button"].fit,
+    .button.fit {
+        display: block;
+        margin: 0 0 1em 0;
+        width: 100%;
+    }
+
+    input[type="submit"].small,
+    input[type="reset"].small,
+    input[type="button"].small,
+    .button.small {
+        font-size: 0.8em;
+    }
+
+    input[type="submit"].big,
+    input[type="reset"].big,
+    input[type="button"].big,
+    .button.big {
+        font-size: 1.35em;
+    }
+
+    input[type="submit"].alt,
+    input[type="reset"].alt,
+    input[type="button"].alt,
+    .button.alt {
+        background-color: transparent;
+        box-shadow: inset 0 0 0 2px rgba(144, 144, 144, 0.25);
+        color: #666 !important;
+    }
+
+        input[type="submit"].alt:hover,
+        input[type="reset"].alt:hover,
+        input[type="button"].alt:hover,
+        .button.alt:hover {
+            background-color: rgba(144, 144, 144, 0.075);
+        }
+
+        input[type="submit"].alt:active,
+        input[type="reset"].alt:active,
+        input[type="button"].alt:active,
+        .button.alt:active {
+            background-color: rgba(144, 144, 144, 0.2);
+        }
+
+        input[type="submit"].alt.icon:before,
+        input[type="reset"].alt.icon:before,
+        input[type="button"].alt.icon:before,
+        .button.alt.icon:before {
+            color: #888;
+        }
+
+    input[type="submit"].special,
+    input[type="reset"].special,
+    input[type="button"].special,
+    .button.special {
+        background-color: #4dac71;
+        color: #ffffff !important;
+    }
+
+        input[type="submit"].special:hover,
+        input[type="reset"].special:hover,
+        input[type="button"].special:hover,
+        .button.special:hover {
+            background-color: #5cb67e;
+        }
+
+        input[type="submit"].special:active,
+        input[type="reset"].special:active,
+        input[type="button"].special:active,
+        .button.special:active {
+            background-color: #459a65;
+        }
+
+    input[type="submit"].disabled, input[type="submit"]:disabled,
+    input[type="reset"].disabled,
+    input[type="reset"]:disabled,
+    input[type="button"].disabled,
+    input[type="button"]:disabled,
+    .button.disabled,
+    .button:disabled {
+        background-color: #444 !important;
+        box-shadow: inset 0 -0.15em 0 0 rgba(0, 0, 0, 0.15);
+        color: #fff !important;
+        cursor: default;
+        opacity: 0.25;
+    }
+

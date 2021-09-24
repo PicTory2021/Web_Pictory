@@ -5,13 +5,10 @@ $("document").ready(function() {
         loop: true
     });
 
-    typewriter.typeString('World!')
-        .pauseFor(2500)
-        .deleteAll()
-        .typeString('Strings')
-        .pauseFor(2500)
-        .deleteChars(7)
-        .typeString('<strong>altered!</strong>')
-        .pauseFor(2500)
+    typewriter.typeString('Pic')
+        .pauseFor(700)
+        .typeString('Tory.')
+        .pauseFor(10000)
         .start();
 })
+
