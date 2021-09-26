@@ -45,10 +45,10 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     color: #ffffff;
-    padding: 16em 0em 14em;
+    /*padding: 16em 0em 14em;*/
     text-align: center;
-    padding: 10em 2em 8em;
-    height: 300px;
+    padding: 15em 2em 0em;
+    height: 80vh;
 }
 
 #banner h2 {
@@ -57,22 +57,24 @@ body{
     font-size: 3.25em;
     font-weight: 400;
     line-height: 1em;
-    margin: 0 0 0.5em 0;
+    margin: 12vh 0 1em 0;
     padding: 0;
 }
 
 #banner p {
     font-size: 1em;
-    margin: 1.5em 0 0 0;
+    margin: 3.5em 0 0 0;
 }
 
 #banner .actions {
-    margin: 6em 0 0 0;
+    margin: 3em 0 0 0;
     cursor: default;
     list-style: none;
     padding-left: 0;
 }
-
+#banner .actions li{
+    margin: 1em 0 0 0;
+}
 /*ul.actions {*/
 /*    cursor: default;*/
 /*    list-style: none;*/
@@ -113,7 +115,27 @@ body{
 #banner .button:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+/*input placer holder 색상 설정 */
+input::-ms-input-placeholder { color: #ffffff; }
+input::-webkit-input-placeholder { color: #ffffff; }
+input::-moz-placeholder { color: #ffffff; }
+input {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    outline: none
+}
 
+input.username {
+    border: none;
+    height: 2.85em;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 1em;
+    text-align: center;
+    color: white;
+}
+input{
+    font-family: 'Gowun Dodum', sans-serif;
+}
 /* Button */
 
 /*input[type="submit"],*/
@@ -186,7 +208,7 @@ body{
     input[type="reset"].small,
     input[type="button"].small,
     .button.small {
-        font-size: 0.8em;
+        font-size: 1em;
     }
 
     input[type="submit"].big,
@@ -381,15 +403,15 @@ body{
 
 .button2.down.anchored{
     background-image: url("../images/dark-arrow.svg");
-    border-color: #ffffff;
+    /*border-color: #ffffff;*/
 
     bottom: -15px;
-    border-bottom: 0;
-    border-radius: 3em 3em 0 0;
+    /*border-bottom: 0;*/
+    /*border-radius: 3em 3em 0 0;*/
     height: 4.5em;
     margin-left: -2em;
     background-color: transparent;
-    border: solid 2px #e5e6e7;
+    /*border: solid 2px #e5e6e7;*/
     color: rgba(255, 255, 255, 0);
     position: absolute;
     left: 50%;
@@ -404,8 +426,8 @@ body{
     background-color: rgba(229, 230, 231, 0.25);
 }
 
-/* Footer */
 
+/* Footer */
 	#footer {
         background: #202222;
         color: #888;
@@ -458,9 +480,7 @@ body{
                     margin-left: 0;
                     padding-left: 0;
                 }
-        .indexcontainer .row p{
-    font-size: 17px;
-}
+
 #footer .row{
     padding-left: 5px;
     border-bottom: solid 1px transparent;

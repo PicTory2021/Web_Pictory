@@ -1,3 +1,4 @@
+
 $("document").ready(function() {
     var app = document.getElementById('app');
 
@@ -12,3 +13,19 @@ $("document").ready(function() {
         .start();
 })
 
+
+window.onload = function() {
+    submitName = document.getElementById('submit')
+
+    console.log(submitName);
+
+    function onSubmit() {
+        const inputName = document.querySelector(".username");
+        const name = inputName.value;
+        localStorage.setItem("username", name);
+        console.log(localStorage.getItem("username"));
+        window.location.href="/main/"
+    }
+
+    submitName.addEventListener("click", onSubmit);
+}
