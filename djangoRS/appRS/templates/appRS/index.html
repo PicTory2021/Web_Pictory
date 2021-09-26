@@ -8,6 +8,7 @@
     <title>Pictory</title>
     <!--    style    -->
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/modal.css">
     <!--  font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,9 +25,25 @@
     {% load static %}
     <script src="/static/js/index.js" type="text/javascript"></script>
     <script src="/static/js/core.js" type="text/javascript"></script>
-    <script src="/static/js/indexScroll.js" type="text/javascript"></script>
+<!--    <script src="/static/js/indexScroll.js" type="text/javascript"></script>-->
+
 </head>
-<body>
+
+
+<div class="modal">
+    <div class="modal_content">
+        <div class="modal_head"></div>
+        <div class="modal_address"></div>
+        <div class="modal_text"></div>
+
+        <button type="button" id="modal_close_btn">모달 창 닫기</button>
+    </div>
+
+    <div class="modal_layer"></div>
+</div>
+
+
+<body style="overflow: auto;">
     <!--Banner-->
     <section id="banner">
         <h2 id="app"></h2>
@@ -49,16 +66,19 @@
 
             <div class="row">
                 {% for arr in randImage %}
-                    <section class="feature 6u 12u$(small)">
+                    <section class="feature 6u 12u$(small)" id="{{arr.Id}}">
                         <img class="image fit" src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
-                        <h3 class="title">{{arr.Name}}</h3>
-                        <h4 class="address"> <i class="fas fa-map-marker-alt"></i>  {{arr.Address}}</h4>
-                        <p>{{arr.Contents}}</p>
+                        <h3 class="name" onclick=openModal("{{arr.Id}}")>{{arr.Name}}</h3>
+                        <h4 class="address" onclick=openModal("{{arr.Id}}")> <i class="fas fa-map-marker-alt"></i> {{arr.Address}} </h4>
+
+                        <p onclick=openModal("{{arr.Id}}")> {{arr.Contents}}</p>
                     </section>
                 {% endfor %}
             </div>
         </div>
     </section>
+
+
 <!-- footer -->
     <footer id="footer">
         <div class="container">
@@ -116,5 +136,7 @@
             </ul>
         </div>
     </footer>
+
+<script src="/static/js/modal.js"></script>
 </body>
 </html>
