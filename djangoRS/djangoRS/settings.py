@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'djangoRS.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = db.DATABASES
 SECRET_KEY = json.loads(open(SECRETS_PATH).read())
+KAKAO_MAPS_API_KEY = json.loads(open(os.path.join(ROOT_DIR, 'djangoRS/djangoRS/mapkey.json')).read())
 
 
 # Password validation

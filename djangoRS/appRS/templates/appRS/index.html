@@ -30,13 +30,19 @@
 </head>
 
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0c22d5eaa27d1c3028794cc38f3f5b8f"></script>
+
 <div class="modal">
     <div class="modal_content">
-        <div class="modal_head"></div>
-        <div class="modal_address"></div>
-        <div class="modal_text"></div>
+        <div class=modal_all_text">
+            <div class="modal_close_head"> </div>
+            <div class="modal_head">Title</div>
+            <div class="modal_add"><i style="display: inline" class="fas fa-map-marker-alt"></i> <div style="display: inline" class="modal_address">Address </div></div>
+            <div id="map"> </div>
+            <div class="modal_text">Content</div>
 
-        <button type="button" id="modal_close_btn">모달 창 닫기</button>
+            <button type="button" id="modal_close_btn">닫기</button>
+        </div>
     </div>
 
     <div class="modal_layer"></div>
@@ -47,7 +53,7 @@
     <!--Banner-->
     <section id="banner">
         <h2 id="app"></h2>
-        <p>사진으로 취향을 알다.</p>
+        <p>사진으로 취향을 알다. </p>
         <ul class="actions">
             <li>
                 <!--버튼 클릭 시 밑으로 부드럽게 내려가게 할랬는데 구현 미완성-->
@@ -56,6 +62,7 @@
         </ul>
         <a href="#one" class="button2 style2 down anchored">Next</a>
     </section>
+
 
     <section id="one" class="indexSectionOne">
         <div class="indexcontainer">
@@ -69,9 +76,10 @@
                     <section class="feature 6u 12u$(small)" id="{{arr.Id}}">
                         <img class="image fit" src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
                         <h3 class="name" onclick=openModal("{{arr.Id}}")>{{arr.Name}}</h3>
-                        <h4 class="address" onclick=openModal("{{arr.Id}}")> <i class="fas fa-map-marker-alt"></i> {{arr.Address}} </h4>
-
-                        <p onclick=openModal("{{arr.Id}}")> {{arr.Contents}}</p>
+                        <h4 class="address"  onclick=openModal("{{arr.Id}}")> <i class="fas fa-map-marker-alt"></i> {{arr.Address}} </h4>
+                        <h6 class="latitude">{{arr.Latitude}}</h6>
+                        <h6 class="longitude">{{arr.Longitude}}</h6>
+                        <p> {{arr.Contents}}</p>
                     </section>
                 {% endfor %}
             </div>
@@ -138,5 +146,6 @@
     </footer>
 
 <script src="/static/js/modal.js"></script>
+
 </body>
 </html>
