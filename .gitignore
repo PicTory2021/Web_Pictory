@@ -11,6 +11,7 @@ __pycache__
 djangoRS/appRS/__pycache__/
 djangoRS/appRS/migrations/
 djangoRS/djangoRS/secrets.json
+djangoRS/appRS/static/tour_img
 
 rsvenv/
 db.py
