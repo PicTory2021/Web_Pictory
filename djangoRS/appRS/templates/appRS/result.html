@@ -32,26 +32,8 @@
 <div class="inner">
     <header class="major">
         <a href="{% url 'index' %}"><h2>Pictory.</h2></a>
-        <span class="username"></span><br/>
-        <p>마음에 드는 사진 한 장을 선택해주세요.</p>
     </header>
 
-    <form method="post" >
-    {% csrf_token %}
-        <section class="tiles">
-            {% for arr in randImage %}
-            <article>
-                <label>
-                <input type="radio" name="select1" value="{{arr.Name}}" onclick="getSelected1()"/>
-                <span class="image">
-                    <img src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
-                </span>
-                </label>
-            </article>
-            {% endfor %}
-        </section>
-        <input type="button" class="button select" value="선택"/>
-    </form>
 </div>
 
     <!-- footer -->
@@ -112,6 +94,4 @@
         </div>
     </footer>
 </body>
-{% load static %}
-    <script src="/static/js/main.js" type="text/javascript"></script>
 </html>
