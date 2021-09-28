@@ -57,6 +57,7 @@
   box-shadow: 0px 0px 20px #000;
   border-radius: 13px;
   overflow-y: scroll;
+  z-index: 1;
 }
 .modal .modal_all_text{
     margin-right: 5%;
