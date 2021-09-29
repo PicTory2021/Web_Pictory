@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pictory</title>
     <!--    style    -->
-    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/result.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <!--  font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,12 +32,28 @@
 <div class="inner">
     <header class="major">
         <a href="{% url 'index' %}"><h2>Pictory.</h2></a>
+        <p></p>
     </header>
-
-</div>
-
-    <!-- footer -->
-    <footer id="footer">
+    <section id="features">
+		<div class="container">
+		    <div class="row aln-center">
+                {% for arr in randImage %}
+			    <div class="col-4 col-6-medium col-12-small">
+					<!-- Feature -->
+					<section>
+						<a href="#" class="image featured"><img src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" /></a>
+						<header>
+							<h3>{{arr.Name}}</h3>
+						</header>
+<!--						<p>{{arr.Contents}}</p>-->
+                    </section>
+			    </div>
+                {% endfor %}
+			</div>
+		</div>
+    </section>
+</div>7
+<footer id="footer">
         <div class="container">
             <div class="row">
                 <section class="4u 6u(medium) 12u$(small)">
@@ -93,5 +109,10 @@
             </ul>
         </div>
     </footer>
+<script>
+    const username = localStorage.getItem('username');
+    const inputTag = document.querySelector('.username');
+    document.querySelector('header p').innerText = `${username} 님을 위한 추천 여행지 입니다.`;
+</script>
 </body>
 </html>

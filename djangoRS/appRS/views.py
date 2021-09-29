@@ -43,4 +43,6 @@ def main(request):
 
 @csrf_exempt
 def result(request):
-    return render(request, 'appRS/result.html')
+    randImage = Image.objects.all().order_by("?")[0:3]
+    context = {'randImage': randImage}
+    return render(request, 'appRS/result.html', context)

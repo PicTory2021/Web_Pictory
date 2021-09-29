@@ -13,3 +13,5 @@ class Image(models.Model):
     Contents = models.TextField(null=True)
     Latitude = models.DecimalField(max_digits=30, decimal_places=18, null=True); #위도
     Longitude = models.DecimalField(max_digits=30, decimal_places=18, null=True); #경도
+    Latitude = models.DecimalField(max_digits=30, decimal_places=18, null=True); #위도
+    Longitude = models.DecimalField(max_digits=30, decimal_places=18, null=True); #경도

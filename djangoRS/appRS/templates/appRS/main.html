@@ -36,13 +36,13 @@
         <p>마음에 드는 사진 한 장을 선택해주세요.</p>
     </header>
 
-    <form method="post" >
+    <form id="formId" method="post" >
     {% csrf_token %}
         <section class="tiles">
             {% for arr in randImage %}
             <article>
                 <label>
-                <input type="radio" name="select1" value="{{arr.Name}}" onclick="getSelected1()"/>
+                <input type="radio" name="select1" value="{{arr.Name}}" onclick="getSelected(1)"/>
                 <span class="image">
                     <img src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
                 </span>
