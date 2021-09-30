@@ -1,3 +1,20 @@
+.contents{
+	display: none;
+}
+.address{
+	display: none;
+}
+.latitude{
+	display: none;
+}
+ .longitude{
+	display: none;
+}
+
+
+
+
+
 /* Header */
 header p {
 		position: relative;

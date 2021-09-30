@@ -14,6 +14,7 @@ function getSelected(num){
             selectedImages[num-1] = node.value;
         }
     })
+    console.log(ImageNodeList);
     console.log(selectedImages);
 }
 function getSelected2(){
@@ -35,6 +36,9 @@ function getSelected3(){
     })
     console.log(selectedImages);
 }
+
+
+
 // selectButton.addEventListener("click",selectBtn);
 var cnt = 1;
 // Ajax

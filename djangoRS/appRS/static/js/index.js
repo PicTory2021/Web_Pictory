@@ -14,18 +14,26 @@ $("document").ready(function() {
 })
 
 
+
+
 window.onload = function() {
-    submitName = document.getElementById('submit')
 
-    console.log(submitName);
+    const savedUsername = localStorage.getItem("username");
+    const inputNameBox = document.querySelector("#noUsername");
+    let inputName = (document.querySelector(".username"));
+    const greeting = document.querySelector("#yesUsername h3");
+    const loginForm = document.querySelector("#login-form");
 
-    function onSubmit() {
-        const inputName = document.querySelector(".username");
-        const name = inputName.value;
-        localStorage.setItem("username", name);
-        console.log(localStorage.getItem("username"));
-        window.location.href="/main/"
+    if(savedUsername !== null && savedUsername !== ""){ //username이 있을 때
+        $(inputNameBox).hide();
+        greeting.innerHTML = `${savedUsername}님, 반갑습니다.`;
+        inputName.value = savedUsername;
+    } else{
+        loginForm.addEventListener("submit",onLoginSubmit);
     }
 
-    submitName.addEventListener("click", onSubmit);
+    function onLoginSubmit(){
+        inputName = inputName.value;
+        localStorage.setItem("username", inputName);
+    }
 }

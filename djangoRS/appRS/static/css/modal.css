@@ -51,17 +51,19 @@
 .modal .modal_content {
   width:80%;
   margin:100px auto;
-  padding:20px 10px;
+  padding:20px 0% 5% 5%;
   background:#fff;
 
   box-shadow: 0px 0px 20px #000;
   border-radius: 13px;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   z-index: 1;
 }
 .modal .modal_all_text{
-    margin-right: 5%;
-    margin-left: 5%;
+
+    overflow-y: scroll;
+    height: 100%;
+    padding-right: 5%;
 }
 
 .modal .modal_layer {
@@ -108,12 +110,47 @@
     position: absolute;
     cursor: pointer;
     margin-top:-13px;
-    margin-left: 3px;
+    margin-left: -2.5%;
     z-index: 1.1;
 }
 .modal .modal_close_head:after {
     display: inline-block;
     content: "\00d7";
     font-size:23pt;
+}
+#modal_close_btn{
+    margin-top: 7%;
+    background-color: #7C7877;
+    border: 1px solid #ffffff;
+
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    /*background-color: #3ba666;*/
+
+    border-radius: 4px;
+    /*border: 0;*/
+    color: #ffffff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    height: 2.3em;
+
+    padding: 0 2em;
+    text-align: center;
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+#modal_close_btn:hover {
+    background-color: rgba(124, 120, 119, 0.5);
 }
 
