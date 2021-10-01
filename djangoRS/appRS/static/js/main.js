@@ -1,44 +1,41 @@
 // get username
 const username = localStorage.getItem('username');
 const inputTag = document.querySelector('.username');
-inputTag.innerText = `${username} 님,`;
+inputTag.innerText = `${username} 님, 마음에 드는 사진 한 장을 선택해주세요.`;
 
 // image select
 let selectedImages = new Array(3)
-const selectButton = document.querySelector(".button.select");
+const selectButton = document.querySelector("#select-btn");
+var prevNode;
 
 function getSelected(num){
+    if(prevNode) {
+        const prevSpan = prevNode.nextSibling.nextSibling;
+        prevSpan.childNodes[1].classList.remove("clicked");
+    }
     const ImageNodeList = document.getElementsByName("select"+num);
     ImageNodeList.forEach((node)=>{
         if(node.checked){
-            selectedImages[num-1] = node.value;
+            if(prevNode == node){
+                selectedImages[num-1] = "";
+                node.checked = false;
+                prevNode = "";
+            }
+            else{
+                selectedImages[num-1] = node.value;
+                const spanImage = node.nextSibling.nextSibling;
+                spanImage.childNodes[1].classList.add("clicked");
+                prevNode = node;
+            }
+
         }
     })
     console.log(selectedImages);
 }
-function getSelected2(){
-    const ImageNodeList = document.getElementsByName("select2");
-    ImageNodeList.forEach((node)=>{
-        if(node.checked){
-            selectedImages[1] = node.value;
-            selectedImages[2] = '';
-        }
-    })
-    console.log(selectedImages);
-}
-function getSelected3(){
-    const ImageNodeList = document.getElementsByName("select3");
-    ImageNodeList.forEach((node)=>{
-        if(node.checked){
-            selectedImages[2] = node.value;
-        }
-    })
-    console.log(selectedImages);
-}
-// selectButton.addEventListener("click",selectBtn);
+
 var cnt = 1;
 // Ajax
-$(".button.select").on('click',function (e){
+$("#select-btn").on('click',function (e){
     console.log("ajax");
     console.log(cnt);
     let data = {'selected': selectedImages};
