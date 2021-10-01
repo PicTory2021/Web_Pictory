@@ -24,7 +24,8 @@ function getSelected(num){
             else{
                 selectedImages[num-1] = node.value;
                 const spanImage = node.nextSibling.nextSibling;
-                spanImage.childNodes[1].classList.add("clicked");
+                console.log(spanImage);
+                spanImage.classList.add("clicked");
                 prevNode = node;
             }
 
@@ -69,5 +70,4 @@ $("#select-btn").on('click',function (e){
         }
     });
 });
-
 

@@ -50,7 +50,8 @@
 
 .modal .modal_content {
   width:80%;
-  margin:100px auto;
+  margin:5% auto 100px auto;
+          /*100px auto;*/
   padding:20px 0% 5% 5%;
   background:#fff;
 
