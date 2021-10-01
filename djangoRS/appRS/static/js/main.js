@@ -39,36 +39,42 @@ $("#select-btn").on('click',function (e){
     console.log("ajax");
     console.log(cnt);
     let data = {'selected': selectedImages};
-    $.ajax({
-        type: 'POST',
-        url: '/main/',
-        data: JSON.stringify(data),
-        success: function (json) {
-            cnt++;
-            var showImage = "";
-            const images = JSON.parse(json.randImage)
-            console.log(images);
-            for (var i = 0; i < images.length; i++) {
-                showImage +="<article class=\"style1\">" +
-                    "            <label>" +
-                    "                <input type=\"radio\" name=\"select"+cnt+"\" value=\""+images[i].pk+"\" onclick=\"getSelected("+cnt+")\"/>" +
-                    "                <span class=\"image\">" +
-                    "                    <img src=\"/static/tour_img/"+ images[i].fields.Name + "1" + images[i].fields.Extension +"\" alt=\"" + images[i].fields.Name + "\" />" +
-                    "                </span>" +
-                    "            </label>" +
-                    "        </article>"
-            }
-            $('[class="tiles"]').html(showImage);
-            if(cnt==3) {
-                selectButton.setAttribute("type", "submit")
-                $("#formId").attr("action", "/result/")
+    if(data.selected[cnt-1]===undefined || data.selected[cnt-1]===''){
+        document.querySelector("#plzSelect").innerHTML = "사진을 선택해주시기 바랍니다";
+        location.href="#plzSelect";
+    }else {
+        console.log(data.selected[cnt - 1]);
+        $.ajax({
+            type: 'POST',
+            url: '/main/',
+            data: JSON.stringify(data),
+            success: function (json) {
+                document.querySelector("#plzSelect").innerHTML = "";
+                cnt++;
+                var showImage = "";
+                const images = JSON.parse(json.randImage)
+                console.log(images);
+                for (var i = 0; i < images.length; i++) {
+                    showImage += "<article class=\"style1\">" +
+                        "            <label>" +
+                        "                <input required type=\"radio\" name=\"select" + cnt + "\" value=\"" + images[i].pk + "\" onclick=\"getSelected(" + cnt + ")\"/>" +
+                        "                <span class=\"image\">" +
+                        "                    <img src=\"/static/tour_img/" + images[i].fields.Name + "1" + images[i].fields.Extension + "\" alt=\"" + images[i].fields.Name + "\" />" +
+                        "                </span>" +
+                        "            </label>" +
+                        "        </article>"
+                }
+                $('[class="tiles"]').html(showImage);
+                if (cnt == 3) {
+                    selectButton.setAttribute("type", "submit")
+                    $("#formId").attr("action", "/result/")
 
+                }
+            },
+            error: function (request, status, err) {
+                console.log("실패")
             }
-        },
-        error: function (request, status, err) {
-            console.log("실패")
-        }
-    });
+        });
+    }
 });
-
 

@@ -75,9 +75,7 @@
   height:100%;
   background:rgba(0, 0, 0, 0.5);
 }
-.address{
-    cursor: pointer;
-}
+
 
 .modal .modal_head{
     /*display:inline;*/
@@ -85,7 +83,7 @@
   font-weight: 150;
   text-align: center;
   margin-bottom: 13px;
-
+  margin-top: 1.5%;
 
 }
 .modal .modal_add{
@@ -96,14 +94,17 @@
 .modal #map{
     /*width:80%;*/
     height:200px;
-    margin-bottom: 10px;
+    margin-bottom: 6%;
 
     padding-bottom: 0.7em;
 }
 .modal .modal_text{
+    line-height: 190%;
     border-top: medium double rgba(144, 144, 144, 0.25);
     padding-top: 0.7em;
     background-color: white;
+    font-size: 16.5px;
+    margin-top: -1%;
 }
 
 .modal .modal_close_head {

@@ -17,7 +17,7 @@ for(var i=0;i<features.length;i++)
 {
     contents_id = $(features[i]).attr('id');
     contents[contents_id] = (document.getElementById(contents_id)).querySelector("p").innerText;
-    if(((document.getElementById(contents_id)).querySelector("p").innerText).length >250) 
+    if(((document.getElementById(contents_id)).querySelector("p").innerText).length >200)
         { (document.getElementById(contents_id)).querySelector("p").innerText = contents[contents_id].substr(0,250) + "...";}
 }
 

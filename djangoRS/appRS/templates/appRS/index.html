@@ -38,6 +38,7 @@
             <div class="modal_head">Title</div>
             <div class="modal_add"><i style="display: inline" class="fas fa-map-marker-alt"></i> <div style="display: inline" class="modal_address">Address </div></div>
             <div id="map"> </div>
+            <h3>상세내용</h3>
             <div class="modal_text">Content</div>
 
             <button  id="modal_close_btn" style="font-family: 'Gowun Dodum', sans-serif" class="button small">닫기</button>
@@ -82,9 +83,9 @@
             <div class="row">
                 {% for arr in randImage %}
                     <section class="feature 6u 12u$(small)" id="{{arr.Id}}">
-                        <img class="image fit" src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
+                        <img onclick=openModal("{{arr.Id}}") class="image fit" src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
                         <h3 class="name" onclick=openModal("{{arr.Id}}")>{{arr.Name}}</h3>
-                        <h4 class="address"  onclick=openModal("{{arr.Id}}")> <i class="fas fa-map-marker-alt"></i> {{arr.Address}} </h4>
+                        <h4 class="address" > <i class="fas fa-map-marker-alt"></i> {{arr.Address}} </h4>
                         <h6 class="latitude">{{arr.Latitude}}</h6>
                         <h6 class="longitude">{{arr.Longitude}}</h6>
                         <p> {{arr.Contents}}</p>

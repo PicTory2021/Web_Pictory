@@ -57,3 +57,33 @@ function changeBanner(){
 }
 
 setInterval(changeBanner, 5000);
+
+window.onkeydown = function(event) {
+    var kcode = event.keyCode;
+    if(kcode == 116) {
+    history.replaceState({}, null, location.pathname);
+    }
+}
+
+window.onbeforeunload = function (e) {
+    if(e.isTrusted === true){
+        location.href=location.pathname;
+        //history.replaceState({}, null, location.pathname);
+        console.log("onbeforeunload");
+    }
+    //location.href=location.pathname;
+
+
+};
+
+
+$(window).bind('unload', function(){
+    console.log("unload");
+         $.ajax({
+           type: "get",
+           async: false,
+           url: location.pathname
+         });
+    });
+
+
