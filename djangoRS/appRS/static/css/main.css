@@ -1,4 +1,23 @@
 
+#formId{
+	text-align: center;
+}
+
+#select-btn {
+    margin: 5em 0 0 0;
+    padding: 0 6em;
+    background-color: #666666;
+    color: white;
+    font-size: 1em;
+    border-color: #fff;
+}
+
+#select-btn:hover{
+	background-color: #F0E5DE;
+	color:#666666!important;
+	border-color:#666666;
+}
+
 input[type="radio"] {
 	position: absolute;
 	opacity: 0;
@@ -9,7 +28,7 @@ input[type="radio"] {
 /* Header */
 header p {
 		position: relative;
-		margin: 0 0 1.5em 0;
+		margin: 0em 0 1.5em 0;
 	}
 	header a {
 		text-decoration: none;
@@ -22,11 +41,9 @@ header p {
 	}
 	header h2 + p {
 		font-size: 1.25em;
-		margin-top: -1em;
+		margin-top: 1em;
 		line-height: 1.5em;
 	}
-
-
 header.major {
 		text-align: center;
 		margin-bottom: 3em;
@@ -40,11 +57,12 @@ header.major {
 			border-top: medium double rgba(144, 144, 144, 0.25);
 			display: inline-block;
 			padding: 2em 2em 0 2em;
+			font-size: 1.5em;
 		}
 
 /* Wrapper */
 
-	.inner {
+	#wrapper > * > .inner {
 		width: 100%;
 		max-width: 68em;
 		margin: 0 auto;
@@ -53,21 +71,35 @@ header.major {
 
 		@media screen and (max-width: 736px) {
 
-			.inner {
+			#wrapper > * > .inner {
 				padding: 0 1.25em;
 			}
 
 		}
-/* Form */
-form {
-    text-align: center;
-}
-	form .select{
-		margin: 3em 0 3em 0;
+/* Main */
+
+	#main {
+		padding: 0em 0 6em 0 ;
 	}
 
-	*, *:before, *:after {
-		box-sizing: inherit;
+		@media screen and (max-width: 736px) {
+
+			#main {
+				padding: 0em 0 4em 0 ;
+			}
+
+		}
+/* Section/Article */
+	section.special, article.special {
+		text-align: center;
+	}
+
+	@media screen and (max-width: 736px) {
+
+		header p {
+			margin-top: 0;
+		}
+
 	}
 /* Image */
 
@@ -83,6 +115,14 @@ form {
 			display: block;
 		}
 
+		.image.left, .image.right {
+			max-width: 40%;
+		}
+
+			.image.left img, .image.right img {
+				width: 100%;
+			}
+
 		.image.left {
 			float: left;
 			padding: 0 1.5em 1em 0;
@@ -95,14 +135,6 @@ form {
 			top: 0.25em;
 		}
 
-		.image.left, .image.right {
-			max-width: 40%;
-		}
-
-			.image.left img, .image.right img {
-				width: 100%;
-			}
-
 		.image.fit {
 			display: block;
 			margin: 0 0 2em 0;
@@ -112,7 +144,26 @@ form {
 			.image.fit img {
 				width: 100%;
 			}
+
+		.image.main {
+			display: block;
+			margin: 0 0 3em 0;
+			width: 100%;
+		}
+
+			.image.main img {
+				width: 100%;
+			}
+
+			@media screen and (max-width: 736px) {
+
+				.image.main {
+					margin: 0 0 2em 0;
+				}
+
+			}
 /* Tiles */
+
 	.tiles {
 		display: -moz-flex;
 		display: -webkit-flex;
@@ -124,14 +175,8 @@ form {
 		flex-wrap: wrap;
 		postiion: relative;
 		margin: -2.5em 0 0 -2.5em;
-
-		}
-	.tiles{
-		width: 100%;
-    	max-width: 68em;
-    	margin: 0 auto;
-    	padding: 0 2.5em 0 0;
 	}
+
 		.tiles article {
 			-moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
 			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
@@ -139,10 +184,10 @@ form {
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
 			width: calc(33.33333% - 2.5em);
-			margin: 2.5em 1.25em 0 1.25em;
+			margin: 2.5em 0 0 2.5em;
 		}
 
-			article label > .image {
+			.tiles article label> .image {
 				-moz-transition: -moz-transform 0.5s ease;
 				-webkit-transition: -webkit-transform 0.5s ease;
 				-ms-transition: -ms-transform 0.5s ease;
@@ -150,19 +195,17 @@ form {
 				position: relative;
 				display: block;
 				width: 100%;
-				height: 100%;
 				border-radius: 4px;
 				overflow: hidden;
-				box-shadow: 3px 4px 3px #7c787796;
 			}
 
-				article label > .image img {
+				.tiles article label> .image img {
 					display: block;
 					width: 100%;
 					height: 322px;
 				}
 
-				article label > .image:before {
+				.tiles article label> .image:before {
 					pointer-events: none;
 					-moz-transition: background-color 0.5s ease, opacity 0.5s ease;
 					-webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
@@ -180,7 +223,7 @@ form {
 					opacity: 0.8;
 				}
 
-				article label > .image:after {
+				.tiles article label> .image:after {
 					pointer-events: none;
 					-moz-transition: opacity 0.5s ease;
 					-webkit-transition: opacity 0.5s ease;
@@ -193,102 +236,12 @@ form {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					/*background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");*/
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
 					opacity: 0.25;
 					z-index: 2;
 				}
-
-			/*.tiles article > a {*/
-			/*	display: -moz-flex;*/
-			/*	display: -webkit-flex;*/
-			/*	display: -ms-flex;*/
-			/*	display: flex;*/
-			/*	-moz-flex-direction: column;*/
-			/*	-webkit-flex-direction: column;*/
-			/*	-ms-flex-direction: column;*/
-			/*	flex-direction: column;*/
-			/*	-moz-align-items: center;*/
-			/*	-webkit-align-items: center;*/
-			/*	-ms-align-items: center;*/
-			/*	align-items: center;*/
-			/*	-moz-justify-content: center;*/
-			/*	-webkit-justify-content: center;*/
-			/*	-ms-justify-content: center;*/
-			/*	justify-content: center;*/
-			/*	-moz-transition: background-color 0.5s ease, -moz-transform 0.5s ease;*/
-			/*	-webkit-transition: background-color 0.5s ease, -webkit-transform 0.5s ease;*/
-			/*	-ms-transition: background-color 0.5s ease, -ms-transform 0.5s ease;*/
-			/*	transition: background-color 0.5s ease, transform 0.5s ease;*/
-			/*	position: absolute;*/
-			/*	top: 0;*/
-			/*	left: 0;*/
-			/*	width: 100%;*/
-			/*	height: 100%;*/
-			/*	padding: 1em;*/
-			/*	border-radius: 4px;*/
-			/*	border-bottom: 0;*/
-			/*	color: #ffffff;*/
-			/*	text-align: center;*/
-			/*	text-decoration: none;*/
-			/*	z-index: 3;*/
-			/*}*/
-
-			/*	.tiles article > a > :last-child {*/
-			/*		margin: 0;*/
-			/*	}*/
-
-			/*	.tiles article > a:hover {*/
-			/*		color: #ffffff !important;*/
-			/*	}*/
-
-			/*	.tiles article > a h2 {*/
-			/*		margin: 0;*/
-			/*	}*/
-
-			/*	.tiles article > a .content {*/
-			/*		-moz-transition: max-height 0.5s ease, opacity 0.5s ease;*/
-			/*		-webkit-transition: max-height 0.5s ease, opacity 0.5s ease;*/
-			/*		-ms-transition: max-height 0.5s ease, opacity 0.5s ease;*/
-			/*		transition: max-height 0.5s ease, opacity 0.5s ease;*/
-			/*		width: 100%;*/
-			/*		max-height: 0;*/
-			/*		line-height: 1.5;*/
-			/*		margin-top: 0.35em;*/
-			/*		opacity: 0;*/
-			/*	}*/
-
-			/*		.tiles article > a .content > :last-child {*/
-			/*			margin-bottom: 0;*/
-			/*		}*/
-
-			/*.tiles article.style1 > .image:before {*/
-			/*	background: url("../images/가산수피아1.JPG");*/
-			/*	background-size: cover;*/
-			/*}*/
-
-			/*.tiles article.style2 > .image:before {*/
-			/*	background-color: #7ecaf6;*/
-			/*}*/
-
-			/*.tiles article.style3 > .image:before {*/
-			/*	background-color: #7bd0c1;*/
-			/*}*/
-
-			/*.tiles article.style4 > .image:before {*/
-			/*	!*background-color: #c75b9b;*!*/
-			/*	background-size: cover;*/
-			/*}*/
-
-			/*.tiles article.style5 > .image:before {*/
-			/*	background-color: #ae85ca;*/
-			/*}*/
-
-			/*.tiles article.style6 > .image:before {*/
-			/*	background-color: #8499e7;*/
-			/*}*/
 
 			body:not(.is-touch) .tiles article label:hover > .image {
 				-moz-transform: scale(1.1);
@@ -304,6 +257,12 @@ form {
 
 				body:not(.is-touch) .tiles article label:hover > .image:after {
 					opacity: 0;
+				}
+
+				.clicked {
+					filter: brightness(50%);
+					/*background-color: #333333;*/
+					/*opacity: 0.35;*/
 				}
 
 			/*body:not(.is-touch) .tiles article:hover .content {*/
@@ -323,11 +282,15 @@ form {
 			opacity: 0;
 		}
 
+		body.is-touch .tiles article .content {
+			max-height: 15em;
+			opacity: 1;
+		}
+
 		@media screen and (max-width: 1280px) {
 
 			.tiles {
 				margin: -1.25em 0 0 -1.25em;
-				/*padding: 0 0 0 -1.5em;*/
 			}
 
 				.tiles article {
@@ -361,7 +324,7 @@ form {
 					margin: 1.25em 0 0 1.25em;
 				}
 
-					.tiles article label:hover > .image {
+					.tiles article:hover > .image {
 						-moz-transform: scale(1.0);
 						-webkit-transform: scale(1.0);
 						-ms-transform: scale(1.0);
@@ -374,7 +337,6 @@ form {
 
 			.tiles {
 				margin: 0;
-				padding: 0;
 			}
 
 				.tiles article {
@@ -383,3 +345,5 @@ form {
 				}
 
 		}
+
+

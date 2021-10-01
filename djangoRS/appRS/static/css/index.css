@@ -53,6 +53,7 @@ body{
     text-align: center;
     padding: 20vh 2em 0em;
     height: 80vh;
+    transition: ease 2s;
 }
 
 #banner h2 {
@@ -85,7 +86,8 @@ body{
 /*    padding-left: 0;*/
 /*}*/
 
-#banner .button {
+/* 1001 #banner 지움 */
+.button {
     background-color: transparent;
     border: 1px solid #ffffff;
     font-weight: 300;

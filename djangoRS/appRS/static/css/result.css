@@ -47,6 +47,7 @@ header.major {
 			border-top: medium double rgba(144, 144, 144, 0.25);
 			display: inline-block;
 			padding: 2em 2em 0 2em;
+			font-size: 1em;
 		}
 /* Features */
 
