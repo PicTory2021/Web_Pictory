@@ -41,10 +41,10 @@
              <section class="tiles">
                 {% for arr in randImage %}
                 <article class="style1">
-                        <label>
-                        <input type="radio" name="select1" value="{{arr.Name}}" onclick="getSelected(1)"/>
+                   <label>
+                   <input type="radio" name="select1" value="{{arr.Id}}" onclick="getSelected(1)"/>
                    <span class="image">
-                      <img src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="" />
+                      <img src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
                    </span>
                         </label>
                 </article>

@@ -10,8 +10,14 @@
  .longitude{
 	display: none;
 }
-
-
+input{
+	display: none;
+	cursor: pointer;
+}
+label{
+	cursor: pointer;
+	margin: 0 0 0 1em;
+}
 
 
 
@@ -36,7 +42,6 @@ header p {
 	}
 header.major {
 		text-align: center;
-		margin-bottom: 3em;
 	}
 
 		header.major h2 {
@@ -46,7 +51,7 @@ header.major {
 		header.major p {
 			border-top: medium double rgba(144, 144, 144, 0.25);
 			display: inline-block;
-			padding: 2em 2em 0 2em;
+			padding: 3em 2em 0 2em;
 			font-size: 1em;
 		}
 /* Features */
@@ -55,7 +60,7 @@ header.major {
 		position: relative;
 		overflow: hidden;
 		text-align: center;
-		padding: 4em 0 6em 0;
+		padding: 3em 0 6em 0;
 	}
 
 		#features p {

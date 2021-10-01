@@ -10,8 +10,8 @@ var prevNode;
 
 function getSelected(num){
     if(prevNode) {
-        const prevSpan = prevNode.nextSibling.nextSibling;
-        prevSpan.childNodes[1].classList.remove("clicked");
+        const prevSpan = prevNode.nextElementSibling.childNodes[1];
+        prevSpan.classList.remove("clicked");
     }
     const ImageNodeList = document.getElementsByName("select"+num);
     ImageNodeList.forEach((node)=>{
@@ -23,8 +23,7 @@ function getSelected(num){
             }
             else{
                 selectedImages[num-1] = node.value;
-                const spanImage = node.nextSibling.nextSibling;
-                console.log(spanImage);
+                const spanImage = node.nextElementSibling.childNodes[1];
                 spanImage.classList.add("clicked");
                 prevNode = node;
             }
@@ -50,13 +49,14 @@ $("#select-btn").on('click',function (e){
             const images = JSON.parse(json.randImage)
             console.log(images);
             for (var i = 0; i < images.length; i++) {
-                showImage += "<article class=\"style1\">";
-                showImage += "<label>"
-                showImage += "<input type=\"radio\" name=\"select"+cnt+"\" value='" + images[i].fields.Name + "' onclick=\"getSelected("+cnt+")\"/>\n"
-                showImage += "<span class=\"image\">"
-                showImage += "<img src=\"/static/tour_img/" + images[i].fields.Name + "1" + images[i].fields.Extension + "\" alt=\"" + images[i].fields.Name + "\" />\n"
-                showImage += "</label>"
-                showImage += "</article>"
+                showImage +="<article class=\"style1\">" +
+                    "            <label>" +
+                    "                <input type=\"radio\" name=\"select"+cnt+"\" value=\""+images[i].pk+"\" onclick=\"getSelected("+cnt+")\"/>" +
+                    "                <span class=\"image\">" +
+                    "                    <img src=\"/static/tour_img/"+ images[i].fields.Name + "1" + images[i].fields.Extension +"\" alt=\"" + images[i].fields.Name + "\" />" +
+                    "                </span>" +
+                    "            </label>" +
+                    "        </article>"
             }
             $('[class="tiles"]').html(showImage);
             if(cnt==3) {
@@ -70,4 +70,5 @@ $("#select-btn").on('click',function (e){
         }
     });
 });
+
 
