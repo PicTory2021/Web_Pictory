@@ -21,9 +21,17 @@ for(var i=0;i<features.length;i++)
         { (document.getElementById(contents_id)).querySelector("p").innerText = contents[contents_id].substr(0,250) + "...";}
 }
 
+const resultPage = document.getElementById("resultPage")?1:0;
+console.log(resultPage);
 
+let openTime;
+let closeTime;
+let tourName;
 //주소 클릭하면 모달 오픈 시켜줄 이벤트 함수
 function openModal(i){
+    tourName = i;
+    openTime = new Date();
+    console.log(openTime)
     modal.style.display="flex";
     body.style.overflow = 'hidden';
 
@@ -54,11 +62,17 @@ function openModal(i){
 
 //닫기 버튼 누르면 모달에서 빠져나가도록
 document.getElementById("modal_close_btn").onclick = function() {
+    closeTime = new Date();
+    console.log(closeTime);
+    console.log((closeTime-openTime)/1000);
+    pushClickDB();
     modal.style.display="none";
     body.style.overflow = 'auto';
 }
 
 modal_close_head.addEventListener("click",evt => {
+    closeTime = Date();
+    pushClickDB();
     modal.style.display="none";
     body.style.overflow = 'auto';
 })
@@ -67,6 +81,8 @@ modal_close_head.addEventListener("click",evt => {
 //esc 누르면 모달에서 빠져나가도록
 window.addEventListener("keyup", e => {
     if(modal.style.display === "flex" && e.key === "Escape") {
+        closeTime = Date();
+        pushClickDB();
         modal.style.display = "none"
         body.style.overflow = 'auto';
     }
@@ -75,13 +91,35 @@ window.addEventListener("keyup", e => {
 modal.addEventListener("click", e => {
     const evTarget = e.target
     if(evTarget.classList.contains("modal_layer")) {
+        closeTime = Date();
+        pushClickDB();
         modal.style.display = "none";
         body.style.overflow = 'auto';
         // map.relayout();
     }
 })
 
-
+function pushClickDB(){
+    if (resultPage === 0) return
+    let data = {
+        'UserId':localStorage.getItem('userId'),
+        'UserName':localStorage.getItem('username'),
+        'SelectImage':tourName,
+        'clickOpenDate':openTime,
+        'stayTime':(closeTime-openTime)/1000,
+    };
+    console.log(data);
+    $.ajax({
+        type: 'POST',
+        url: '/result/click',
+        data: JSON.stringify(data),
+        success: function (json) {
+            console.log("ok")
+        },error: function (request, status, err) {
+            console.log("실패")
+            }
+        });
+}
 
 
 

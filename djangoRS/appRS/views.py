@@ -1,7 +1,7 @@
 import json
 
 from django.shortcuts import render
-from .models import Image
+from .models import Image, UserDB, DetailClick
 from django.http import JsonResponse, HttpResponse,HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
@@ -17,11 +17,7 @@ def index(request):
     #     if(len(i.Contents)>250):
     #         i.Contents = i.Contents[0:250]
     #         i.Contents +="..."
-    context = {'randImage': randImage,
-               'mapApiKey':settings.KAKAO_MAPS_API_KEY,
-               'test':"TEST"
-               }
-    print(context['test'])
+    context = {'randImage': randImage }
 
     return render(request, 'appRS/index.html', context)
 
@@ -52,3 +48,27 @@ def test(request):
     randImage = Image.objects.all().order_by("?")[0:6]
     context = {'randImage': randImage}
     return render(request, 'appRS/test.html', context)
+
+@csrf_exempt
+def get_user(request):
+    if request.method == 'POST':
+        UserId = len(UserDB.objects.all()) + 1
+        UserName = json.loads(request.body)
+        user = UserDB(UserId=UserId, UserName=UserName)
+        user.save()
+
+        json_data = json.dumps({'userid': UserId, 'username': UserName})
+        jsonUser = {'jsonUser': json_data}
+        return JsonResponse(jsonUser, content_type="application/json")
+
+@csrf_exempt
+def detailClick(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        savedb = DetailClick(UserId=data['UserId'], UserName=data['UserName'], SelectImage=data['SelectImage'],
+                             clickOpenDate=data['clickOpenDate'], stayTime=data['stayTime'])
+        print(savedb)
+        savedb.save()
+
+    return JsonResponse(data, content_type="application/json")

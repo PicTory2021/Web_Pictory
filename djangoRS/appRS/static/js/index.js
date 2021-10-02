@@ -27,12 +27,28 @@ window.onload = function() {
         greeting.innerHTML = `${savedUsername}님, 반갑습니다.`;
         inputName.value = savedUsername;
     } else{
+
         loginForm.addEventListener("submit",onLoginSubmit);
     }
 
     function onLoginSubmit(){
-        inputName = inputName.value;
-        localStorage.setItem("username", inputName);
+        username = inputName.value;
+        $.ajax({
+            type: 'POST',
+            url: '/index/',
+            data: JSON.stringify(username),
+            success: function (json) {
+                const userId = JSON.parse(json.jsonUser);
+                localStorage.setItem("userId", userId["userid"]);
+            },error: function (request, status, err) {
+                console.log("실패")
+                localStorage.setItem("status",status);
+                localStorage.setItem("err",err);
+
+                }
+            });
+        //localStorage.setItem("userId")
+        localStorage.setItem("username", username);
     }
 }
 
