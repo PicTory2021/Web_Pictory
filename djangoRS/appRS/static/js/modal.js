@@ -71,7 +71,7 @@ document.getElementById("modal_close_btn").onclick = function() {
 }
 
 modal_close_head.addEventListener("click",evt => {
-    closeTime = Date();
+    closeTime = new Date();
     pushClickDB();
     modal.style.display="none";
     body.style.overflow = 'auto';
@@ -81,7 +81,7 @@ modal_close_head.addEventListener("click",evt => {
 //esc 누르면 모달에서 빠져나가도록
 window.addEventListener("keyup", e => {
     if(modal.style.display === "flex" && e.key === "Escape") {
-        closeTime = Date();
+        closeTime = new Date();
         pushClickDB();
         modal.style.display = "none"
         body.style.overflow = 'auto';
@@ -91,7 +91,7 @@ window.addEventListener("keyup", e => {
 modal.addEventListener("click", e => {
     const evTarget = e.target
     if(evTarget.classList.contains("modal_layer")) {
-        closeTime = Date();
+        closeTime = new Date();
         pushClickDB();
         modal.style.display = "none";
         body.style.overflow = 'auto';
