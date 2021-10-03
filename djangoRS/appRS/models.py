@@ -23,6 +23,18 @@ class Image(models.Model):
     Latitude = models.DecimalField(max_digits=30, decimal_places=18, null=True); #위도
     Longitude = models.DecimalField(max_digits=30, decimal_places=18, null=True); #경도
 
+
+class goodBad(models.Model):
+    username = models.CharField(max_length=100)
+    select1 = models.CharField(max_length=10)
+    select2 = models.CharField(max_length=10)
+    select3 = models.CharField(max_length=10)
+    rec1 = models.CharField(max_length=10, default=None, null=True)
+    rec2 = models.CharField(max_length=10, default=None, null=True)
+    rec3 = models.CharField(max_length=10, default=None, null=True)
+    eval = models.BooleanField(default=None, null=True)
+
+
 class DetailClick(models.Model): #결과 중 자세히보기를 선택한 관광지 DB
     Id = models.AutoField(primary_key=True)
     UserId = models.IntegerField()
