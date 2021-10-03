@@ -326,7 +326,7 @@ input{
     color:#666;
     font-weight: 300;
     margin: 0 0 1em 0;
-    cursor: pointer;
+
 }
 .indexcontainer h4{
     font-size: 14px;
@@ -335,10 +335,11 @@ input{
     font-weight: 300;
     margin: 0 0 1em 0;
 }
-.indexcontainer .name:hover{
+.indexcontainer .name span:hover{
     font-weight: bold;
     color: saddlebrown;
     transition: color .7s ease-out;
+    cursor: pointer;
 }
 .indexcontainer p{
     font-size: 1.25em;

@@ -49,7 +49,7 @@ $("#select-btn").on('click',function (e){
     const userId = localStorage.getItem("userId")
     let data = {
         'userId':userId,
-        'selected': selectedImages[cnt-1]
+        'selected': selectedImages
     };
     if(data.selected===undefined || data.selected===''){
         document.querySelector("#plzSelect").innerHTML = "사진을 선택해주세요.";
@@ -68,7 +68,7 @@ $("#select-btn").on('click',function (e){
                     // console.log(url)
                     // console.log(select3);
                     const id = parseInt(userId)
-                    window.location =  "/"+data.url+"/"+id+"/"+data.select3
+                    window.location =  "/"+data.url+"/"+id
                 },
                 error: function (request, status, err) {
                     console.log("실패")

@@ -24,6 +24,6 @@ urlpatterns = [
     path('result/', appRS.views.result, name='result'),
     path('result/click', appRS.views.detailClick, name='result/click'),
     path('index/', appRS.views.get_user, name='user'),
-    path('result/<int:id>/<int:pk>', appRS.views.result, name='result'),
+    path('result/<int:id>/', appRS.views.result, name='result'),
     path('eval/',appRS.views.eval,name='eval')
 ]

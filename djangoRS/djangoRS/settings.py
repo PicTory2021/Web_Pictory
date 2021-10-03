@@ -29,7 +29,7 @@ SECRETS_PATH = os.path.join(ROOT_DIR, 'djangoRS/djangoRS/secrets.json')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

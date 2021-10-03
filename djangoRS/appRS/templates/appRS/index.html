@@ -85,7 +85,7 @@
                 {% for arr in randImage %}
                     <section class="feature 6u 12u$(small)" id="{{arr.Id}}">
                         <img onclick=openModal("{{arr.Id}}") class="image fit" src="/static/tour_img/{{arr.Name}}1{{arr.Extension}}" alt="{{arr.Name}}" />
-                        <h3 class="name" onclick=openModal("{{arr.Id}}")>{{arr.Name}}</h3>
+                        <h3 class="name"> <span onclick=openModal("{{arr.Id}}")>{{arr.Name}}</span></h3>
                         <h4 class="address" > <i class="fas fa-map-marker-alt"></i> {{arr.Address}} </h4>
                         <h6 class="latitude">{{arr.Latitude}}</h6>
                         <h6 class="longitude">{{arr.Longitude}}</h6>

@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from django.conf import settings
 from django.db.models import Q
+from .clustering import init_select_img, select_img, recommendation
 
 
 @csrf_exempt
@@ -39,34 +40,47 @@ def main(request):
                          rec1='', rec2='', rec3='', eval=None)
             gb.save()
             print("save")
-            context = {'url': 'result', 'select3': selected[2]}
+            context = {'url': 'result'}
             return JsonResponse(context, content_type="application/json")
 
         else :
             print(selected)
-            randImage = serializers.serialize("json",Image.objects.all().order_by("?")[0:6])
+            print(type(selected[0]))
+            for i in range(0,len(selected)):
+                selected[i] = int(selected[i])
+            rec_id = select_img(selected)
+            print("second rec_id: ", rec_id)
+            randImage = Image.objects.filter(Q(Id=rec_id[0]) | Q(Id=rec_id[1]) | Q(Id=rec_id[2]) | Q(Id=rec_id[3]) | Q(Id=rec_id[4]) | Q(Id=rec_id[5]))
+            randImage = serializers.serialize('json', randImage)
             context = {'randImage': randImage}
             return JsonResponse(context, content_type="application/json")
 
     else:
         # 처음 사진 선택 시, 보여지는 사진 전송
-        randImage = Image.objects.all().order_by("?")[0:6]
+        rec_id = init_select_img()
+        print("rec_id: ", rec_id)
+        print("rec_id_type: ",type(rec_id[0]))
+        randImage = Image.objects.filter(Q(Id=rec_id[0]) | Q(Id=rec_id[1]) | Q(Id=rec_id[2]) | Q(Id=rec_id[3]) | Q(Id=rec_id[4]) | Q(Id=rec_id[5]))
+        #randImage = Image.objects.all().order_by("?")[0:6]
         context = {'randImage': randImage}
         return render(request, 'appRS/main.html', context)
 
 @csrf_exempt
-def result(request, id, pk):
+def result(request, id):
+    selected=[]
     userId = id
-    sel3 = pk
-    print(userId)
-    print(sel3)
-    rec_id = Image.objects.all().order_by("?").values('Id')[0:3]  # id 값만 가져오기(임시)
-    recImage = Image.objects.filter(Q(Id=rec_id[0]['Id']) | Q(Id=rec_id[1]['Id']) | Q(Id=rec_id[2]['Id']))
 
     # 같은 userId 를 가진 레코드가져오기
     qs = goodBad.objects.filter(userId=userId)
     # 그 중, 마지막 레코드 가져오기
     sp = qs[len(qs)-1]
+    selected.append(int(sp.select1))
+    selected.append(int(sp.select2))
+    selected.append(int(sp.select3))
+    # 추천결과 3장 id 값 가져오기
+    rec_id = recommendation(selected)
+    recImage = Image.objects.filter(Q(Id=rec_id[0]) | Q(Id=rec_id[1]) | Q(Id=rec_id[2]))
+
     # rec 1,2,3 update
     sp.rec1 = recImage[0].Id
     sp.rec2 = recImage[1].Id
@@ -82,17 +96,12 @@ def eval(request):
         data = json.loads(request.body)
         eval = data['eval']
         userId = data['userId']
-        print(eval)
         qs = goodBad.objects.filter(userId=userId)
         sp = qs[len(qs) - 1]
         sp.eval = eval
         sp.save()
         return HttpResponse(request,'appRS/result.html')
 
-def test(request):
-    randImage = Image.objects.all().order_by("?")[0:6]
-    context = {'randImage': randImage}
-    return render(request, 'appRS/test.html', context)
 
 @csrf_exempt
 def get_user(request):
