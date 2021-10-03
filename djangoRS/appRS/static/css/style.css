@@ -14,7 +14,8 @@ body{
 	#footer {
         background: #202222;
         color: #888;
-        padding: 1em 0em 2em;
+        padding: 2em 0em 2em;
+        margin-top: 10%;
     }
 
 		#footer h2, #footer h3, #footer h4 {
