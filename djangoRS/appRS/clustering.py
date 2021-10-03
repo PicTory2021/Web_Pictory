@@ -144,19 +144,20 @@ def init_select_img():
     selected_cluster_list = random.sample(range(0,cluster_level), cluster_level)
     selected_img_id_list = []
     for i in range(0,len(selected_cluster_list)):
-        print(selected_img_id_list)
+
         if len(selected_cluster_list) < 5:
-            if i == 1 or i == 2:
+            if i == 0 or i == 1:
                 selected_img_id_list.extend(clustered_img_id_df[ clustered_img_id_df['cluster'] == selected_cluster_list[i] ].sample(n=2)['id'].values.tolist())
             else:
                 selected_img_id_list.extend(clustered_img_id_df[ clustered_img_id_df['cluster'] == selected_cluster_list[i] ].sample(n=1)['id'].values.tolist())
         elif len(selected_cluster_list) < 6:
-            if i == 1:
+            if i == 0:
                 selected_img_id_list.extend(clustered_img_id_df[ clustered_img_id_df['cluster'] == selected_cluster_list[i] ].sample(n=2)['id'].values.tolist())
             else:
                 selected_img_id_list.extend(clustered_img_id_df[ clustered_img_id_df['cluster'] == selected_cluster_list[i] ].sample(n=1)['id'].values.tolist())
         else:
             selected_img_id_list.extend(clustered_img_id_df[ clustered_img_id_df['cluster'] == selected_cluster_list[i] ].sample(n=1)['id'].values.tolist())
+    print(selected_img_id_list)
     return selected_img_id_list
 
 

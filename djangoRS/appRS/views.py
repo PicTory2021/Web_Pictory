@@ -13,10 +13,10 @@ from .clustering import init_select_img, select_img, recommendation
 @csrf_exempt
 def index(request):
     randImage = Image.objects.all().order_by("?")[0:6]
-    # for i in randImage:
-    #     if(len(i.Contents)>250):
-    #         i.Contents = i.Contents[0:250]
-    #         i.Contents +="..."
+
+    for i in randImage:
+        i.Name = i.Name.replace('"','').replace('"','')
+        i.Url = "/static/tour_img/%s1%s" % (i.Name, i.Extension)
     context = {'randImage': randImage }
 
     return render(request, 'appRS/index.html', context)
@@ -29,28 +29,24 @@ def main(request):
         data = json.loads(request.body)
         selected = data['selected']
         userId = int(data['userId'])
-        print(userId)
-        print(type(userId))
+
         if len(data['selected']) == 3:
-            print(selected)
             # rec_id = Image.objects.all().order_by("?").only('Id')[0:3]  # id 값만 가져오기(임시)
             # rec_json = serializers.serialize('json',rec_id)
 
             gb = goodBad(userId=userId, select1=selected[0], select2=selected[1], select3=selected[2],
                          rec1='', rec2='', rec3='', eval=None)
             gb.save()
-            print("save")
             context = {'url': 'result'}
             return JsonResponse(context, content_type="application/json")
 
         else :
-            print(selected)
-            print(type(selected[0]))
             for i in range(0,len(selected)):
                 selected[i] = int(selected[i])
             rec_id = select_img(selected)
-            print("second rec_id: ", rec_id)
             randImage = Image.objects.filter(Q(Id=rec_id[0]) | Q(Id=rec_id[1]) | Q(Id=rec_id[2]) | Q(Id=rec_id[3]) | Q(Id=rec_id[4]) | Q(Id=rec_id[5]))
+            for i in randImage:  #name의 큰따옴표 없애주기
+                i.Name = i.Name.replace('"', '').replace('"', '')
             randImage = serializers.serialize('json', randImage)
             context = {'randImage': randImage}
             return JsonResponse(context, content_type="application/json")
@@ -58,10 +54,10 @@ def main(request):
     else:
         # 처음 사진 선택 시, 보여지는 사진 전송
         rec_id = init_select_img()
-        print("rec_id: ", rec_id)
-        print("rec_id_type: ",type(rec_id[0]))
         randImage = Image.objects.filter(Q(Id=rec_id[0]) | Q(Id=rec_id[1]) | Q(Id=rec_id[2]) | Q(Id=rec_id[3]) | Q(Id=rec_id[4]) | Q(Id=rec_id[5]))
-        #randImage = Image.objects.all().order_by("?")[0:6]
+        for i in randImage:
+            i.Name = i.Name.replace('"', '').replace('"', '')
+            i.Url = "/static/tour_img/%s1%s" % (i.Name, i.Extension)
         context = {'randImage': randImage}
         return render(request, 'appRS/main.html', context)
 
@@ -80,6 +76,9 @@ def result(request, id):
     # 추천결과 3장 id 값 가져오기
     rec_id = recommendation(selected)
     recImage = Image.objects.filter(Q(Id=rec_id[0]) | Q(Id=rec_id[1]) | Q(Id=rec_id[2]))
+    for i in recImage:
+        i.Name = i.Name.replace('"','').replace('"','')
+        i.Url = "/static/tour_img/%s1%s" % (i.Name, i.Extension)
 
     # rec 1,2,3 update
     sp.rec1 = recImage[0].Id
