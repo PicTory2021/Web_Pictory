@@ -1,3 +1,18 @@
+/* 상태바 */
+.prog{
+   width: 240px;
+   background: #6666668c;
+   margin: 1.5em auto 0 auto;
+}
+.progs{
+    width: 33.3%;
+    height: 16px;
+    background: #666666;
+    color:#fff;
+    text-align: center;
+    line-height: 50px;
+    transition: ease-out 0.5s;
+}
 
 #formId{
    text-align: center;
@@ -49,7 +64,7 @@ header p {
    }
 header.major {
       text-align: center;
-      margin-bottom: 2.5em;
+      margin-bottom: 1.5em;
    }
 
       header.major h2 {

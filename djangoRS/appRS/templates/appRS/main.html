@@ -35,7 +35,17 @@
       <div class="inner">
          <header class="major">
              <a href="{% url 'index' %}"><h2>Pictory.</h2></a>
+<!--             <div class="bar-container">-->
+<!--                 <h2>HTML5</h2>-->
+<!--                 <progress value="1" max="3"></progress>-->
+<!--             </div>-->
+<!--             <div class="prog">-->
+<!--                 <div class="progs" id="progressing">5%</div>-->
+<!--             </div>-->
              <p><span class ="username"></span><br/>마음에 드는 여행지 한 장을 선택해 주세요.</p>
+             <div class="prog">
+                 <div class="progs" id="progressing"></div>
+             </div>
              <h3 style="font-weight: bold; color:saddlebrown;" id="plzSelect"></h3>
          </header>
             <form id="formId" method="get" >
@@ -51,7 +61,9 @@
                 </article>
                 {% endfor %}
              </section>
-                <input type="button" id="select-btn" class="button" value="선택"/>
+                <span  onclick="moveBtn()">
+                    <input type="button" id="select-btn" class="button" value="선택"/>
+                </span>
             </form>
       </div>
    </div>

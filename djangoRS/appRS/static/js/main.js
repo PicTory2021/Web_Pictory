@@ -42,6 +42,35 @@ function getSelected(num){
 }
 
 var cnt = 1;
+// progress bar
+var progWidth = [33.3,66.6,100]
+
+function moveBtn() {
+    console.log(cnt)
+    if(selectedImages[cnt-1] === undefined || selectedImages[cnt-1]==='') {
+        console.log("선택안함")
+    }else{
+        var progressDiv = document.getElementById('progressing');
+        var width = progWidth[cnt - 1]
+        var maxWidth = progWidth[cnt]
+        console.log("width : " + width)
+        console.log("maxWidth : " + maxWidth)
+        var id = setInterval(frame, 45);
+
+        function frame() {
+            if (width >= maxWidth) {
+                clearInterval(id);
+            } else {
+                width = width + 2;
+                progressDiv.style.width = width + "%";
+            }
+        }
+    }
+    window.scrollTo(0,0)
+}
+
+
+
 // Ajax
 $("#select-btn").on('click',function (e){
     console.log("ajax");
@@ -51,9 +80,9 @@ $("#select-btn").on('click',function (e){
         'userId':userId,
         'selected': selectedImages
     };
-    if(data.selected===undefined || data.selected===''){
+    if(selectedImages[cnt-1]===undefined ||selectedImages[cnt-1]===''){
         document.querySelector("#plzSelect").innerHTML = "사진을 선택해주세요.";
-        location.href="#plzSelect";
+        window.scrollTo(0,0)
     }else {
         console.log(data.selected);
         if(cnt == 3){
