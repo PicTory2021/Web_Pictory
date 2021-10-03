@@ -46,8 +46,9 @@ var cnt = 1;
 $("#select-btn").on('click',function (e){
     console.log("ajax");
     console.log(cnt);
+    const userId = localStorage.getItem("userId")
     let data = {
-        'username':username,
+        'userId':userId,
         'selected': selectedImages[cnt-1]
     };
     if(data.selected===undefined || data.selected===''){
@@ -66,7 +67,8 @@ $("#select-btn").on('click',function (e){
                     // const select3 = data.select3
                     // console.log(url)
                     // console.log(select3);
-                    window.location =  "/"+data.url+"/"+data.select3
+                    const id = parseInt(userId)
+                    window.location =  "/"+data.url+"/"+id+"/"+data.select3
                 },
                 error: function (request, status, err) {
                     console.log("실패")

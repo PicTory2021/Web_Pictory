@@ -27,13 +27,15 @@ def main(request):
         print("main")
         data = json.loads(request.body)
         selected = data['selected']
-        username = data['username']
+        userId = int(data['userId'])
+        print(userId)
+        print(type(userId))
         if len(data['selected']) == 3:
             print(selected)
             # rec_id = Image.objects.all().order_by("?").only('Id')[0:3]  # id 값만 가져오기(임시)
             # rec_json = serializers.serialize('json',rec_id)
 
-            gb = goodBad(username=username, select1=selected[0], select2=selected[1], select3=selected[2],
+            gb = goodBad(userId=userId, select1=selected[0], select2=selected[1], select3=selected[2],
                          rec1='', rec2='', rec3='', eval=None)
             gb.save()
             print("save")
@@ -53,15 +55,16 @@ def main(request):
         return render(request, 'appRS/main.html', context)
 
 @csrf_exempt
-def result(request, id):
-    username = 'dfdd'
-    sel3 = id
+def result(request, id, pk):
+    userId = id
+    sel3 = pk
+    print(userId)
     print(sel3)
     rec_id = Image.objects.all().order_by("?").values('Id')[0:3]  # id 값만 가져오기(임시)
     recImage = Image.objects.filter(Q(Id=rec_id[0]['Id']) | Q(Id=rec_id[1]['Id']) | Q(Id=rec_id[2]['Id']))
 
     # 같은 userId 를 가진 레코드가져오기
-    qs = goodBad.objects.filter(username=username)
+    qs = goodBad.objects.filter(userId=userId)
     # 그 중, 마지막 레코드 가져오기
     sp = qs[len(qs)-1]
     # rec 1,2,3 update
@@ -75,12 +78,12 @@ def result(request, id):
 
 @csrf_exempt
 def eval(request):
-    username = 'dfdd'
     if request.method == 'POST':
         data = json.loads(request.body)
         eval = data['eval']
+        userId = data['userId']
         print(eval)
-        qs = goodBad.objects.filter(username=username)
+        qs = goodBad.objects.filter(userId=userId)
         sp = qs[len(qs) - 1]
         sp.eval = eval
         sp.save()

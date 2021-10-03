@@ -25,7 +25,7 @@ class Image(models.Model):
 
 
 class goodBad(models.Model):
-    username = models.CharField(max_length=100)
+    userId = models.IntegerField(default=1)
     select1 = models.CharField(max_length=10)
     select2 = models.CharField(max_length=10)
     select3 = models.CharField(max_length=10)
@@ -33,6 +33,7 @@ class goodBad(models.Model):
     rec2 = models.CharField(max_length=10, default=None, null=True)
     rec3 = models.CharField(max_length=10, default=None, null=True)
     eval = models.BooleanField(default=None, null=True)
+    evalDate = models.DateTimeField(default=django.utils.timezone.now)
 
 
 class DetailClick(models.Model): #결과 중 자세히보기를 선택한 관광지 DB
