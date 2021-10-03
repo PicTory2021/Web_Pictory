@@ -4,11 +4,11 @@
 }
 
 #select-btn {
-    margin: 5em 0 0 0;
-    padding: 0 6em;
+    margin: 2em 0 0 0;
+    padding: 0 4em;
     background-color: #666666;
     color: white;
-    font-size: 1em;
+    font-size: 1.2em;
     border-color: #fff;
 }
 
@@ -28,7 +28,7 @@ input[type="radio"] {
 /* Header */
 header p {
       position: relative;
-      margin: 0em 0 1.5em 0;
+      margin: 0em 0 0.5em 0;
    }
    header a {
       text-decoration: none;
@@ -44,9 +44,12 @@ header p {
       margin-top: 1em;
       line-height: 1.5em;
    }
+   header h3 {
+      margin: 1.5em 0 0 0;
+   }
 header.major {
       text-align: center;
-      margin-bottom: 3em;
+      margin-bottom: 2.5em;
    }
 
       header.major h2 {
@@ -56,8 +59,8 @@ header.major {
       header.major p {
          border-top: medium double rgba(144, 144, 144, 0.25);
          display: inline-block;
-         padding: 2em 2em 0 2em;
-         font-size: 1.5em;
+         padding: 2.5em 1em 0 1em;
+         font-size: 1em;
       }
 
 /* Wrapper */
@@ -66,13 +69,13 @@ header.major {
       width: 100%;
       max-width: 68em;
       margin: 0 auto;
-      padding: 0 2.5em;
+      /*padding: 0 2.5em;*/
    }
 
       @media screen and (max-width: 736px) {
 
          #wrapper > * > .inner {
-            padding: 0 1.25em;
+            /*padding: 0 1.25em;*/
          }
 
       }
@@ -202,7 +205,7 @@ header.major {
             .tiles article label> .image img {
                display: block;
                width: 100%;
-               height: 322px;
+               height: 250px;
             }
 
             .tiles article label> .image:before {
@@ -244,10 +247,10 @@ header.major {
             }
 
          body:not(.is-touch) .tiles article label:hover > .image {
-            -moz-transform: scale(1.1);
-            -webkit-transform: scale(1.1);
-            -ms-transform: scale(1.1);
-            transform: scale(1.1);
+            -moz-transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            transform: scale(1.05);
          }
 
             body:not(.is-touch) .tiles article label:hover > .image:before {
@@ -290,7 +293,7 @@ header.major {
       @media screen and (max-width: 1280px) {
 
          .tiles {
-            margin: -1.25em 0 0 -1.25em;
+            margin: -1.25em 2em 0 0.75em;
          }
 
             .tiles article {
@@ -299,11 +302,22 @@ header.major {
             }
 
       }
+   @media screen and (max-width: 1170px) {
 
+         .tiles {
+            margin: -1.25em 1.25em 0 0em;
+         }
+
+            .tiles article {
+               width: calc(33.33333% - 1.25em);
+               margin: 1.25em 0 0 1.25em;
+            }
+
+      }
       @media screen and (max-width: 980px) {
 
          .tiles {
-            margin: -2.5em 0 0 -2.5em;
+            margin: -2.5em 3em 0 0.5em;
          }
 
             .tiles article {
@@ -316,7 +330,7 @@ header.major {
       @media screen and (max-width: 736px) {
 
          .tiles {
-            margin: -1.25em 0 0 -1.25em;
+            margin: -1.25em 2em 0 0.75em;
          }
 
             .tiles article {
@@ -336,13 +350,17 @@ header.major {
       @media screen and (max-width: 480px) {
 
          .tiles {
-            margin: 0;
+            margin: 0 1.5em;
          }
 
             .tiles article {
                width: 100%;
                margin: 1.25em 0 0 0;
             }
-
+            .tiles article label> .image img {
+               display: block;
+               width: 100%;
+               height: 200px;
+            }
       }
 

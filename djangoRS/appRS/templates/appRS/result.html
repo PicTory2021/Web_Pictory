@@ -60,7 +60,7 @@
     <section id="features">
 		<div class="container">
 		    <div class="row aln-center">
-                {% for arr in randImage %}
+                {% for arr in recImage %}
 			    <div class="col-4 col-6-medium col-12-small">
 					<!-- Feature -->
 					<section class="feature" id="{{arr.Id}}">
@@ -81,10 +81,10 @@
     </section>
     <section id="goodBad" style="margin-top: -90px; color:saddlebrown" align="center">
         <h3 align="center" class="username"></h3>
-        <h3>
-            <label><input type="button" class="good" /><i class="far fa-thumbs-up fa-lg" style="margin-top:-80px"></i> 좋아요</label>
-            <label><input type="button" class="bad" /><i class="far fa-thumbs-down fa-lg" style="margin-top:-80px"></i> 싫어요</label>
-        </h3>
+        <div>
+            <label><input type="button" class="eval" id="good" /><span><i class="far fa-thumbs-up fa-lg" style="margin-top:-80px"></i>좋아요</span></label>
+            <label><input type="button" class="eval" id="bad" /><span><i class="far fa-thumbs-down fa-lg" style="margin-top:-80px"></i>싫어요</span></label>
+        </div>
         <br><br>
     </section>
 </div>

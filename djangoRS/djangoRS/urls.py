@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', appRS.views.index, name='index'),
     path('main/', appRS.views.main, name='main'),
-    path('result/', appRS.views.result, name='result'),
+    path('result/<int:id>/', appRS.views.result, name='result'),
+    path('eval/',appRS.views.eval,name='eval')
 ]

@@ -57,7 +57,8 @@
         <ul class="actions">
             <form class="hidden" id="login-form" action="main">
             <li id="noUsername">
-                <input required type="text" class="username" placeholder="이름을 입력해주세요."
+                <input required type="text" maxlength='100'
+                       class="username" placeholder="이름을 입력해주세요."
                        onfocus="this.placeholder = ''"
                        onblur="this.placeholder = '이름을 입력해주세요.'"/>
             </li>
