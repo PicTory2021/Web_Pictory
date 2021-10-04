@@ -291,6 +291,7 @@ input{
     }
 
 
+
 .indexSectionOne{
     padding: 6em 0em 4em;
     margin:0;
@@ -309,8 +310,77 @@ input{
     padding-bottom: 1em;
 }
 .indexcontainer header{
-    margin-bottom: 4em;
     text-align: center;
+}
+.indexcontainer .indexGrid{
+    /*margin-bottom: 4em;*/
+    text-align: center;
+    display: grid;
+    grid-template-columns: 28% 28% 28%;
+    grid-column-gap: 5%;
+    padding-left: 6.5%;
+}
+@media(max-width:550px) {
+    .indexcontainer .indexGrid {
+        /*margin-bottom: 4em;*/
+        text-align: center;
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-column-gap: 5%;
+        padding-left: 1%;
+    }
+}
+@media(min-width:1100px) {
+    .indexcontainer .indexGrid {
+        /*margin-bottom: 4em;*/
+        text-align: center;
+        display: grid;
+        grid-template-columns: 23% 23% 23%;
+        grid-column-gap: 5%;
+        padding-left: 16%;
+    }
+}
+@media(min-width:1400px) {
+    .indexcontainer .indexGrid {
+        /*margin-bottom: 4em;*/
+        text-align: center;
+        display: grid;
+        grid-template-columns: 18% 18% 18%;
+        grid-column-gap: 5%;
+        padding-left: 28%;
+    }
+}
+
+
+.indexcontainer .indexGrid .indexTitle{
+    font-size:20px;
+    font-weight: bold;
+    height: 15%;
+    /*height: 28%;*/
+    /*display: grid;*/
+    align-items: center;
+    align-content: center;
+
+
+}
+.indexcontainer .indexGrid .indexText{
+    font-size:14px;
+    text-align: justify;
+    padding-bottom: 35%;
+}
+@media(max-width:550px) {
+    .indexcontainer .indexGrid .indexText{
+    font-size:14px;
+    text-align: justify;
+    padding-bottom: 60%;
+    }
+}
+@media(max-width:400px) {
+    .indexcontainer .indexGrid .indexText{
+    font-size:14px;
+    text-align: justify;
+    padding-bottom: 100%;
+    }
 }
 
 .indexcontainer h2{
@@ -361,7 +431,6 @@ input{
     padding-left: 5px;
     border-bottom: solid 1px transparent;
     display: grid;
-
     grid-template-columns: 47% 47%;
     grid-column-gap: 4%;
     grid-row-gap:2em;
@@ -386,6 +455,7 @@ input{
         padding-left: 5px;
         border-bottom: solid 1px transparent;
         display: contents;
+        margin-top: 3%;
         grid-template-columns: 32% 32% 32%;
         grid-column-gap: 4%;
         grid-row-gap:2em;
