@@ -1,34 +1,18 @@
-
-$("document").ready(function() {
-    var app = document.getElementById('app');
-
-    var typewriter = new Typewriter(app, {
-        loop: true
-    });
-
-    typewriter.typeString('Pic')
-        .pauseFor(700)
-        .typeString('Tory.')
-        .pauseFor(10000)
-        .start();
-})
-
-
-window.onload = function() {
-
+$("document").ready(function(){
     const savedUsername = localStorage.getItem("username");
+    const savedUserId = localStorage.getItem("userId");
+
     const inputNameBox = document.querySelector("#noUsername");
     let inputName = document.querySelector(".username");
     const greeting = document.querySelector("#yesUsername h3");
     const loginForm = document.querySelector("#login-form");
 
-    if(savedUsername !== null && savedUsername !== ""){ //username이 있을 때
+    if(savedUserId !== null && savedUserId !== ""){ //username이 있을 때-> userId가 있을 때
         $(inputNameBox).hide();
         greeting.innerHTML = `${savedUsername}님, 반갑습니다.`;
         inputName.value = savedUsername;
-
+        console.log(savedUserId)
     } else{
-
         loginForm.addEventListener("submit",onLoginSubmit);
     }
 
@@ -45,13 +29,29 @@ window.onload = function() {
                 console.log("실패")
                 localStorage.setItem("status",status);
                 localStorage.setItem("err",err);
-
+                alert("죄송합니다. 오류가 발생하여 처음 페이지로 돌아갑니다.(문의는 페이지 하단 메일로 부탁드립니다.)");
+                window.location = '/';
                 }
             });
         //localStorage.setItem("userId")
         localStorage.setItem("username", username);
     }
-}
+})
+
+$("document").ready(function() {
+    var app = document.getElementById('app');
+
+    var typewriter = new Typewriter(app, {
+        loop: true
+    });
+
+    typewriter.typeString('Pic')
+        .pauseFor(700)
+        .typeString('Tory.')
+        .pauseFor(10000)
+        .start();
+})
+
 
 const images=[
     '고창읍성1.png',
@@ -74,7 +74,6 @@ function changeBanner(){
 }
 
 setInterval(changeBanner, 5000);
-
 
 function directToOne(){ //화살표 클릭 시 관광지 보기 화면으로 화면 이동
     var offset = $('#one').offset();

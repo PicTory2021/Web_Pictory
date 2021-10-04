@@ -1,16 +1,19 @@
 
 // get username
 let username
-window.onload = function() {
+$(document).ready(function() {
     username = localStorage.getItem('username');
-    if(username !== null && username !== ""){
+    userId = localStorage.getItem('userId');
+    if(userId !== null && userId !== ""){
         const inputTag = document.querySelector('.username');
         inputTag.innerText = `${username} 님,`;
     }
     else{
+        alert("이름 등록 후, 이용 가능합니다. 처음 페이지로 이동합니다.")
         window.location = '/'
     }
-}
+})
+
 // image select
 let selectedImages = [];
 const selectButton = document.querySelector("#select-btn");
@@ -35,7 +38,6 @@ function getSelected(num){
                 spanImage.classList.add("clicked");
                 prevNode = node;
             }
-
         }
     })
     console.log(selectedImages);
@@ -88,7 +90,6 @@ $("#select-btn").on('click',function (e){
     }else {
         console.log(data.selected);
         if(cnt == 3){
-            data['selected'] = selectedImages
             $.ajax({
                 type: 'POST',
                 url: '/main/',
@@ -98,11 +99,13 @@ $("#select-btn").on('click',function (e){
                     // const select3 = data.select3
                     // console.log(url)
                     // console.log(select3);
-                    const id = parseInt(userId)
-                    window.location =  "/"+data.url+"/"+id
+                    cnt=1;
+                    const id = parseInt(userId);
+                    window.location =  "/"+data.url+"/"+id;
                 },
                 error: function (request, status, err) {
-                    console.log("실패")
+                    alert("죄송합니다. 오류가 발생하여 처음 페이지로 돌아갑니다.(문의는 페이지 하단 메일로 부탁드립니다.)");
+                    window.location = '/';
                 }
             });
         }
@@ -128,17 +131,12 @@ $("#select-btn").on('click',function (e){
                             "        </article>"
                     }
                     $('[class="tiles"]').html(showImage);
-                    // if (cnt == 3) {
-                    //     selectButton.setAttribute("type", "submit")
-                    //     $("#formId").attr("action", "/result/")
-                    //
-                    // }
                 },
                 error: function (request, status, err) {
-                    console.log("실패")
+                    alert("죄송합니다. 오류가 발생하여 처음 페이지로 돌아갑니다.(문의는 페이지 하단 메일로 부탁드립니다.)");
+                    window.location = '/';
                 }
             });
         }
     }
 });
-
