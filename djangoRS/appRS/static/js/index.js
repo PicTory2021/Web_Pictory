@@ -18,7 +18,7 @@ window.onload = function() {
 
     const savedUsername = localStorage.getItem("username");
     const inputNameBox = document.querySelector("#noUsername");
-    let inputName = (document.querySelector(".username"));
+    let inputName = document.querySelector(".username");
     const greeting = document.querySelector("#yesUsername h3");
     const loginForm = document.querySelector("#login-form");
 
@@ -26,6 +26,7 @@ window.onload = function() {
         $(inputNameBox).hide();
         greeting.innerHTML = `${savedUsername}님, 반갑습니다.`;
         inputName.value = savedUsername;
+
     } else{
 
         loginForm.addEventListener("submit",onLoginSubmit);
@@ -64,7 +65,7 @@ let index = 0;
 
 function changeBanner(){
     const banner = document.querySelector("#banner");
-    console.log(images[index]);
+    //console.log(images[index]);
     banner.style.backgroundImage = `url("/static/images/overlay.png"), url("/static/tour_img/${images[index]}")`
     index++;
     if(index == images.length){
@@ -74,36 +75,27 @@ function changeBanner(){
 
 setInterval(changeBanner, 5000);
 
-window.onkeydown = function(event) {
-    var kcode = event.keyCode;
-    if(kcode == 116) {
-    history.replaceState({}, null, location.pathname);
-    }
+
+function directToOne(){ //화살표 클릭 시 관광지 보기 화면으로 화면 이동
+    var offset = $('#one').offset();
+    console.log(offset);
+    $('html').animate( { scrollTop : offset.top}, 100);
 }
 
-window.onbeforeunload = function (e) {
-    if(e.isTrusted === true){
-        location.href=location.pathname;
-        //history.replaceState({}, null, location.pathname);
-        console.log("onbeforeunload");
-    }
-    //location.href=location.pathname;
-
-
-};
-
-
-$(window).bind('unload', function(){
-    console.log("unload");
-         $.ajax({
-           type: "get",
-           async: false,
-           url: location.pathname
-         });
-    });
-
-const underNextBtn = document.querySelector('.underNextBtn');
-
-function moveTop(){
+function moveTop(){ //화면 맨 아래 입장하기 버튼 클릭 시 화면 제일 위로 이동
      window.scrollTo(0,0);
 }
+
+
+body = document.querySelector('body');
+
+body.addEventListener("click", e => {
+   const evTarget = e.target
+    const direction = document.querySelector('#direct');
+    if (evTarget.classList.contains("username")) {
+        $(direction).hide(500);
+    }
+    else{
+        $(direction).show(500);
+    }
+})

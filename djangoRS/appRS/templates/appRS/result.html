@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/static/css/result.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/modal.css">
-    <link rel="stylesheet" href="/static/css/style.css">
+<!--    <link rel="stylesheet" href="/static/css/naverModal.css">-->
 
     <!--  font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,10 +46,17 @@
             <button  id="modal_close_btn" style="font-family: 'Gowun Dodum', sans-serif" class="button small">닫기</button>
         </div>
     </div>
-
     <div class="modal_layer"></div>
 </div>
 
+<!--<div class="naverModal">-->
+<!--    <div class="modal_content">-->
+<!--        <div class="modal_close_head"> </div>-->
+<!--        <iframe src=""></iframe>-->
+<!--        <button  id="naverModal_close_btn" style="font-family: 'Gowun Dodum', sans-serif" class="button small">닫기</button>-->
+<!--    </div>-->
+<!--    <div class="naverModal_layer"></div>-->
+<!--</div>-->
 
 <body>
 <div class="inner" id="resultPage">
@@ -67,7 +74,7 @@
 <!--                        <input type="button" value="더보기" />-->
                         <h3 class="name" onclick=openModal("{{arr.Id}}")>{{arr.Name}}</h3>
                         <div class="search">
-                            <i class="fas fa-search"></i>
+                            <span class="naverSearch" onclick=openModal("{{arr.Id}}")><i class="fas fa-search"></i></span>
                         </div>
 						<div class="image featured"><img onclick=openModal("{{arr.Id}}")  src="{{arr.Url}}" alt="{{arr.Name}}" /></div>
 						<header>

@@ -29,6 +29,7 @@ let closeTime;
 let tourName;
 //주소 클릭하면 모달 오픈 시켜줄 이벤트 함수
 function openModal(i){
+    $('.modal_all_text').animate( { scrollTop : $('modal_head').scrollTop }); //모달 오픈될 때 항상 제일 위에꺼부터 보여주기
     tourName = i;
     openTime = new Date();
     console.log(openTime)
@@ -57,14 +58,13 @@ function openModal(i){
     });
     marker.setMap(map);
 
+
 }
 
 
 //닫기 버튼 누르면 모달에서 빠져나가도록
 document.getElementById("modal_close_btn").onclick = function() {
     closeTime = new Date();
-    console.log(closeTime);
-    console.log((closeTime-openTime)/1000);
     pushClickDB();
     modal.style.display="none";
     body.style.overflow = 'auto';
@@ -99,6 +99,7 @@ modal.addEventListener("click", e => {
     }
 })
 
+//result 결과modal 닫을 때 db 들어감
 function pushClickDB(){
     if (resultPage === 0) return
     let data = {
