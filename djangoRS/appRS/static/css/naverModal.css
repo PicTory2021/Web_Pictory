@@ -1,5 +1,5 @@
 
-.modal {
+.naverModal {
   display: none;
   position: fixed;
   width:100%;
@@ -13,7 +13,7 @@
 
 }
 @media(min-width:850px){
-    .modal {
+    .naverModal {
             display: none;
             position: fixed;
             width:80%;
@@ -41,14 +41,14 @@
   margin:0;
 }
 
-.modal button {
+.naverModal button {
   display:inline-block;
   width:100px;
   margin-left:calc(100% - 100px - 10px);
 
 }
 
-.modal .modal_content {
+.naverModal .modal_content {
   width:80%;
   margin:5% auto 100px auto;
           /*100px auto;*/
@@ -60,14 +60,14 @@
   /*overflow-y: scroll;*/
   z-index: 1;
 }
-.modal .modal_all_text{
+.naverModal .modal_all_text{
 
     overflow-y: scroll;
     height: 100%;
     padding-right: 5%;
 }
 
-.modal .modal_layer {
+.naverModal .naverModal_layer {
   position:fixed;
   top:0;
   left:0;
@@ -77,7 +77,7 @@
 }
 
 
-.modal .modal_head{
+.naverModal .modal_head{
     /*display:inline;*/
   font-size:25px;
   font-weight: 150;
@@ -86,19 +86,19 @@
   margin-top: 1.5%;
 
 }
-.modal .modal_add{
+.naverModal .modal_add{
     text-align: center;
     margin-bottom: 8px;
 
 }
-.modal #map{
+.naverModal #map{
     /*width:80%;*/
     height:200px;
     margin-bottom: 6%;
 
     padding-bottom: 0.7em;
 }
-.modal .modal_text{
+.naverModal .modal_text{
     line-height: 190%;
     border-top: medium double rgba(144, 144, 144, 0.25);
     padding-top: 0.7em;
@@ -107,7 +107,7 @@
     margin-top: -1%;
 }
 
-.modal .modal_close_head {
+.naverModal .modal_close_head {
     /*display:inline;*/
     position: absolute;
     cursor: pointer;
@@ -115,16 +115,16 @@
     margin-left: -2.5%;
     z-index: 1.1;
 }
-.modal .modal_close_head:after {
+.naverModal .modal_close_head:after {
     display: inline-block;
     content: "\00d7";
     font-size:23pt;
 }
-#modal_close_btn{
-    margin-top: 8%;
+#naverModal_close_btn{
+    margin-top: 7%;
     background-color: #7C7877;
     border: 1px solid #ffffff;
-    line-height: 1%;
+
 
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -144,7 +144,7 @@
     cursor: pointer;
     display: inline-block;
     font-weight: 400;
-    height: 2.2em;
+    height: 2.3em;
 
     padding: 0 2em;
     text-align: center;

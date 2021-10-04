@@ -448,6 +448,7 @@ input{
     overflow: hidden;
 
     transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
 }
 .button2.style2:hover{
     background-color: rgba(229, 230, 231, 0.25);
