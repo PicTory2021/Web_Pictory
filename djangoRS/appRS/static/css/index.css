@@ -370,9 +370,9 @@ input{
 }
 @media(max-width:550px) {
     .indexcontainer .indexGrid .indexText{
-    font-size:14px;
+    font-size:13px;
     text-align: justify;
-    padding-bottom: 60%;
+    padding-bottom: 55%;
     }
 }
 @media(max-width:400px) {
