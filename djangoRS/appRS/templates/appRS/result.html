@@ -63,9 +63,11 @@
                 {% for arr in recImage %}
 			    <div class="col-4 col-6-medium col-12-small">
 					<!-- Feature -->
-
 					<section class="feature" id="{{arr.Id}}">
                         <h3 class="name" onclick=openModal("{{arr.Id}}")>{{arr.Name}}</h3>
+                        <div class="search">
+                            <i class="fas fa-search"></i>
+                        </div>
 						<div class="image featured"><img onclick=openModal("{{arr.Id}}")  src="{{arr.Url}}" alt="{{arr.Name}}" /></div>
 						<header>
                             <h4 class="address"  onclick=openModal("{{arr.Id}}")> <i class="fas fa-map-marker-alt"></i> {{arr.Address}} </h4>
@@ -82,7 +84,7 @@
     </section>
     <section id="goodBad" style="margin-top: -90px; color:saddlebrown" align="center">
         <h3 align="center" class="username"></h3>
-        <div>
+        <div id="eval">
             <label><input type="button" class="eval" id="good" /><span><i id="goodIcon" class="far fa-thumbs-up fa-lg" style="margin-top:-80px"></i>좋아요</span></label>
             <label><input type="button" class="eval" id="bad" /><span><i id="badIcon" class="far fa-thumbs-down fa-lg" style="margin-top:-80px"></i>싫어요</span></label>
         </div>
