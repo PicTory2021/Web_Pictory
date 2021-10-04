@@ -274,5 +274,5 @@ def recommendation(img_id_list):
 # matrix_df_csv = encoded_matrix_df[['cluster','id']]
 # matrix_df_csv.to_csv('clustered_img_id.csv',index = False)
 
-clustered_img_id_df = pd.read_csv('./clustered_img_id.csv')
+clustered_img_id_df = pd.read_csv('C:/ProjectRS/PicTory/djangoRS/appRS/clustered_img_id.csv')
 cluster_level = 5
