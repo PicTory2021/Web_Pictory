@@ -20,10 +20,10 @@ import appRS.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', appRS.views.index, name='index'),
+    path('index/', appRS.views.get_user, name='user'),
     path('main/', appRS.views.main, name='main'),
     path('result/', appRS.views.result, name='result'),
     path('result/click', appRS.views.detailClick, name='result/click'),
-    path('index/', appRS.views.get_user, name='user'),
     path('result/<int:id>/', appRS.views.result, name='result'),
     path('eval/',appRS.views.eval,name='eval')
 ]

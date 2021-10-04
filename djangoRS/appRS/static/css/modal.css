@@ -116,9 +116,11 @@
     z-index: 1.1;
 }
 .modal .modal_close_head:after {
+    position: absolute;
     display: inline-block;
     content: "\00d7";
     font-size:23pt;
+    z-index: 1.1;
 }
 #modal_close_btn{
     margin-top: 7%;

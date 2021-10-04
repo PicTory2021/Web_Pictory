@@ -1,17 +1,18 @@
 /* 상태바 */
 .prog{
    width: 240px;
-   background: #6666668c;
+   background: #6666666b;
    margin: 1.5em auto 0 auto;
 }
-.progs{
-    width: 33.3%;
-    height: 16px;
-    background: #666666;
-    color:#fff;
-    text-align: center;
-    line-height: 50px;
-    transition: ease-out 0.5s;
+.progs {
+   width: 33.3%;
+   max-width: 100%;
+   height: 16px;
+   background: #666666;
+   color: #fff;
+   text-align: center;
+   line-height: 50px;
+   transition: ease-out 0.5s;
 }
 
 #formId{
@@ -19,18 +20,18 @@
 }
 
 #select-btn {
-    margin: 2em 0 0 0;
-    padding: 0 4em;
-    background-color: #666666;
-    color: white;
-    font-size: 1.2em;
-    border-color: #fff;
+   margin: 2em 0 0 0;
+   padding: 0 4em;
+   background-color: #666666;
+   color: white;
+   font-size: 1.2em;
+   border-color: #fff;
 }
 
-#select-btn:hover{
+#select-btn:hover {
    background-color: #F0E5DE;
-   color:#666666!important;
-   border-color:#666666;
+   color: #666666 !important;
+   border-color: #666666;
 }
 
 input[type="radio"] {
@@ -113,7 +114,6 @@ header.major {
    }
 
    @media screen and (max-width: 736px) {
-
       header p {
          margin-top: 0;
       }

@@ -64,6 +64,7 @@ def main(request):
 @csrf_exempt
 def result(request, id):
     selected=[]
+    rec_id=[]
     userId = id
 
     # 같은 userId 를 가진 레코드가져오기
@@ -73,19 +74,25 @@ def result(request, id):
     selected.append(int(sp.select1))
     selected.append(int(sp.select2))
     selected.append(int(sp.select3))
-    # 추천결과 3장 id 값 가져오기
-    rec_id = recommendation(selected)
+    if sp.rec1 == '':
+        # 추천결과 3장 id 값 가져오기
+        rec_id = recommendation(selected)
+        # rec 1,2,3 update
+        sp.rec1 = rec_id[0]
+        sp.rec2 = rec_id[1]
+        sp.rec3 = rec_id[2]
+        # 저장
+        sp.save()
+    else :
+        rec_id.append(int(sp.rec1))
+        rec_id.append(int(sp.rec2))
+        rec_id.append(int(sp.rec3))
+
     recImage = Image.objects.filter(Q(Id=rec_id[0]) | Q(Id=rec_id[1]) | Q(Id=rec_id[2]))
     for i in recImage:
-        i.Name = i.Name.replace('"','').replace('"','')
+        i.Name = i.Name.replace('"', '').replace('"', '')
         i.Url = "/static/tour_img/%s1%s" % (i.Name, i.Extension)
 
-    # rec 1,2,3 update
-    sp.rec1 = recImage[0].Id
-    sp.rec2 = recImage[1].Id
-    sp.rec3 = recImage[2].Id
-    # 저장
-    sp.save()
     context = {'recImage': recImage}
     return render(request, 'appRS/result.html', context)
 

@@ -43,7 +43,7 @@ function getSelected(num){
 
 var cnt = 1;
 // progress bar
-var progWidth = [33.3,66.6,100]
+var progWidth = [33.3,66.6,100,100]
 
 function moveBtn() {
     console.log(cnt)
@@ -52,7 +52,9 @@ function moveBtn() {
     }else{
         var progressDiv = document.getElementById('progressing');
         var width = progWidth[cnt - 1]
-        var maxWidth = progWidth[cnt]
+        var maxWidth;
+        if (cnt === 3){ maxWidth = 100; }
+        else { maxWidth = progWidth[cnt]; }
         console.log("width : " + width)
         console.log("maxWidth : " + maxWidth)
         var id = setInterval(frame, 45);
