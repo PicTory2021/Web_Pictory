@@ -1,3 +1,20 @@
+.underNextBtn{
+	padding: 0.4em 1em;
+    background-color: rgba(139, 69, 19, 0.59);
+    font-size: 1.0em;
+    border-color: #fff;
+    color:white;
+    /*border: 1px solid #ffffff;*/
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.underNextBtn:hover{
+	background-color: rgba(139, 69, 19, 0.82);
+	transition: ease-in-out .5s;
+}
+
 .naverSearch{
 	cursor: pointer;
 }

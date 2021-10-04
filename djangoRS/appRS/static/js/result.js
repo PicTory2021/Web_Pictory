@@ -15,6 +15,7 @@ $(document).ready(function() {
 })
 
 $(".eval").on('click',function(e){
+    document.querySelector('.underNextDiv').style.display = 'contents';
     const state = e.target.id
     const eval = ( state === "good" ) ? true:false
     changeGoodBadIcon(eval)
