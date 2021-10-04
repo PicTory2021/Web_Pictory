@@ -102,4 +102,8 @@ $(window).bind('unload', function(){
          });
     });
 
+const underNextBtn = document.querySelector('.underNextBtn');
 
+function moveTop(){
+     window.scrollTo(0,0);
+}

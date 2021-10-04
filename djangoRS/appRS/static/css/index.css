@@ -463,14 +463,13 @@ li .hidden{
     text-align: center;
 }
 .underNextBtn{
-    padding: 0.4em 4em;
-    margin-bottom: 2%;
+    padding: 0.4em 3.7em;
     background-color: #666666;
     font-size: 1.2em;
     border-color: #fff;
     color:white;
     /*border: 1px solid #ffffff;*/
-
+    cursor: pointer;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
