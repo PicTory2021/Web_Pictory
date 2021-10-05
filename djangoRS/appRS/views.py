@@ -1,26 +1,32 @@
 import json
+import random
 
 from django.shortcuts import render
 from .models import Image, UserDB, DetailClick, goodBad
-from django.http import JsonResponse, HttpResponse,HttpResponseRedirect
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect, Http404
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from django.conf import settings
 from django.db.models import Q
 from .clustering import init_select_img, select_img, recommendation
-
+from django.db import connection
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 @csrf_exempt
+
 def index(request):
     randImage = Image.objects.all().order_by("?")[0:6]
-
+    for i in randImage:
+        if(len(i.Contents)>250):
+            i.Contents = i.Contents[0:250]
+            i.Contents +="..."
     for i in randImage:
         i.Name = i.Name.replace('"','').replace('"','')
         i.Url = "/static/tour_img/%s1%s" % (i.Name, i.Extension)
-    context = {'randImage': randImage }
+    context = {'randImage': randImage}
 
     return render(request, 'appRS/index.html', context)
-
 @csrf_exempt
 def main(request):
     if request.method =='POST':
@@ -95,6 +101,85 @@ def result(request, id):
 
     context = {'recImage': recImage}
     return render(request, 'appRS/result.html', context)
+
+@csrf_exempt
+def nearLocation(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        Lat = data['Latitude'] # 위도
+        Lon = data['Longitude'] # 경도
+        if Lat != "" and Lon != "" :
+            # Lat = 35.1171597
+            # Lon = 128.9676741
+            print(type(Lon))
+            # conn = pymysql.connect(host='localhost',
+            #                        user='yeon', password='now0913', db='pictory', charset='utf8')
+            try:
+                cursor = connection.cursor()
+
+                sql = "SELECT *,(6371*acos(cos(radians({Lat}))*cos(radians(Latitude))*cos(radians(Longitude)-radians({Lon}))" \
+                      "+sin(radians({Lat}))*sin(radians(Latitude))))" \
+                      "AS distance FROM apprs_image HAVING distance <= 5 ORDER BY distance LIMIT 50".format(Lat=Lat, Lon=Lon)
+                print(sql)
+                cursor.execute(sql)
+                print("excute")
+                rows = cursor.fetchall()
+                print("fetchall")
+                nearImages=[]
+                random_i = []
+                ran_num = random.randint(0,len(rows)-1)
+                for i in range(6):
+                    while ran_num in random_i:
+                        ran_num = random.randint(0,len(rows)-1)
+                    random_i.append(ran_num)
+
+                for i in random_i:
+                    row = {'Id':rows[i][0],
+                           'Name':rows[i][1].replace('"', '').replace('"', ''),
+                           'Extension':rows[i][2],
+                           'ZipCode':rows[i][3],
+                           'Address':rows[i][4],
+                           'Contents':rows[i][5],
+                           'Latitude':rows[i][6],
+                           'Longitude':rows[i][7],
+                           'Url': "/static/tour_img/%s1%s" % (rows[i][1], rows[i][2])
+                           }
+                    nearImages.append(row)
+                for i in nearImages:
+                    if (len(i['Contents']) > 200):
+                        i['Contents'] = i['Contents'][0:200]
+                        i['Contents'] += "..."
+                # for i in nearImages:
+                #     i[1] = i[1].replace('"', '').replace('"', '')
+                #     i[7] = "/static/tour_img/%s1%s" % (i[1], i[7])
+                # nearImages = serializers.serialize('json', nearImages)
+                print(1)
+                context = {'randImage': nearImages}
+                print(context)
+                print(2)
+                # print(type(context))
+                # print(nearImages)
+                # connection.commit()
+                connection.close()
+
+            except Exception as e:
+                connection.rollback()
+                context = {'randImage': 'fail'}
+                print("Failed selecting  ", e)
+                return Http404()
+            return JsonResponse(context, content_type="application/json")
+        else:
+            return Http404()
+
+@csrf_exempt
+def getContext(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data['id']
+        get_context = Image.objects.filter(Id=id)
+        get_context = serializers.serialize('json',get_context)
+        context={"context" : get_context}
+        return JsonResponse(context, content_type="application/json")
 
 @csrf_exempt
 def eval(request):

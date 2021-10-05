@@ -25,5 +25,7 @@ urlpatterns = [
     path('result/', appRS.views.result, name='result'),
     path('result/click', appRS.views.detailClick, name='result/click'),
     path('result/<int:id>/', appRS.views.result, name='result'),
-    path('eval/',appRS.views.eval,name='eval')
+    path('eval/',appRS.views.eval,name='eval'),
+    path('nearLocation/', appRS.views.nearLocation, name='nearLocation'),
+    path('getContext/', appRS.views.getContext, name='getContext'),
 ]

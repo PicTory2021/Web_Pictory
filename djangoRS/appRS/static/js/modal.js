@@ -5,21 +5,22 @@ const modal_address = document.querySelector('div.modal_address');
 const modal_text = document.querySelector('div.modal_text');
 
 const body = document.body;
-const features = document.getElementsByClassName('feature');
+// const features = document.getElementsByClassName('feature');
 
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 
+const content={}
 var value;
-contents = {};
 
-//개요 contents Object에 저장 후 index 페이지의 개요는 글자 줄이기
-for(var i=0;i<features.length;i++)
-{
-    contents_id = $(features[i]).attr('id');
-    contents[contents_id] = (document.getElementById(contents_id)).querySelector("p").innerText;
-    if(((document.getElementById(contents_id)).querySelector("p").innerText).length >200)
-        { (document.getElementById(contents_id)).querySelector("p").innerText = contents[contents_id].substr(0,250) + "...";}
-}
+//
+// //개요 contents Object에 저장 후 index 페이지의 개요는 글자 줄이기
+// for(var i=0;i<features.length;i++)
+// {
+//     contents_id = $(features[i]).attr('id');
+//     contents[contents_id] = (document.getElementById(contents_id)).querySelector("p").innerText;
+//     if(((document.getElementById(contents_id)).querySelector("p").innerText).length >200)
+//         { (document.getElementById(contents_id)).querySelector("p").innerText = contents[contents_id].substr(0,250) + "...";}
+// }
 
 const resultPage = document.getElementById("resultPage")?1:0;
 console.log(resultPage);
@@ -29,6 +30,23 @@ let closeTime;
 let tourName;
 //주소 클릭하면 모달 오픈 시켜줄 이벤트 함수
 function openModal(i){
+    let content="";
+    const data ={"id":i}
+    $.ajax({
+        type: 'POST',
+        url: '/getContext/',
+        data: JSON.stringify(data),
+        success: function (json) {
+            const data = JSON.parse(json.context)
+            content = data[0].fields['Contents']
+            modal_text.innerText = content
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+
+
     $('.modal_all_text').animate( { scrollTop : $('modal_head').scrollTop }); //모달 오픈될 때 항상 제일 위에꺼부터 보여주기
     tourName = i;
     openTime = new Date();
@@ -39,13 +57,14 @@ function openModal(i){
     totalDiv = document.getElementById(i);
     title = totalDiv.querySelector("h3").innerText;
     address = totalDiv.querySelector("h4").innerText;
-    content = contents[i];
+    // content = totalDiv.querySelector("p").innerText;
+    //content = contents[i];
     latitude = totalDiv.querySelector(".latitude").innerText;
     longitude = totalDiv.querySelector(".longitude").innerText;
 
     modal_head.innerText = title;
     modal_address.innerText = address;
-    modal_text.innerText = content;
+    // modal_text.innerText = `${content} 왜 안돼?`;
 
     var options = { //지도를 생성할 때 필요한 기본 옵션
     center: new kakao.maps.LatLng(latitude, longitude), //지도의 중심좌표.

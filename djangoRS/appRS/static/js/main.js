@@ -118,7 +118,7 @@ $("#select-btn").on('click',function (e){
                     document.querySelector("#plzSelect").innerHTML = "";
                     cnt++;
                     var showImage = "";
-                    const images = JSON.parse(json.randImage)
+                    const images = JSON.parse(json.randImage);
                     console.log(images);
                     for (var i = 0; i < images.length; i++) {
                         showImage += "<article class=\"style1\">" +
