@@ -42,7 +42,10 @@ body{
 /*    font-size: 1.25em;*/
 /*}*/
 
-
+.nearLocHeader{
+    text-align: center;
+    margin: 1em 0 2em;
+}
 #banner {
     background: url("../images/overlay.png"), url("../images/가산수피아1.JPG");
     background-position: center;
