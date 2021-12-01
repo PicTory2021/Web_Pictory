@@ -34,5 +34,10 @@
 - **추천 결과 화면 (result.html)**    
      - 이미지 선택 3회를 완료 시 마지막 사진을 기반으로 한 최종 결과인 관광지 이미지 3장이 출력됨
      - 각 관광지를 선택 시 모달창으로 세부 정보를 확인 가능     
-     - 사용자는 추천 받은 결과에 대해 만족도 평가 가능      
-     (이미지 준비중)
+     - 사용자는 추천 받은 결과에 대해 만족도 평가 가능     
+
+     <img src="https://user-images.githubusercontent.com/80735829/144227030-f41e465f-991a-461b-ab24-222f4f3e2044.png"  width="420" height="250"/>   <img src="https://user-images.githubusercontent.com/80735829/144227112-a3f4d267-f208-430f-8a93-cb21989aea89.png"  width="420" height="250"/>   
+     
+     
+
+
